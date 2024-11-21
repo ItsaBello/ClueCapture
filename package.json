@@ -1,0 +1,15 @@
+{
+  "name": "cluecapture",
+  "version": "1.0.0",
+  "description": "PictureGame",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.1"
+  }
+}
