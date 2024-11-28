@@ -1,50 +1,52 @@
-  body {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-family: Arial, sans-serif;
-    background-color: darkgreen;
-    color: white;
-  }
-  
-  h1 {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 60px;
+body {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	font-family: Arial, sans-serif;
+	background-color: darkgreen;
+	color: white;
+}
 
-  }
-  
-  .game-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .game-board {
-    display: grid;
-    grid-template-columns: repeat(4, 100px);
-    gap: 10px;
-  }
-  
-  .card {
-    width: 100px;
-    height: 100px;
-    background-color: white;
-    color: black;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2em;
-    cursor: pointer;
-    border-radius: 8px;
-  }
-  
-  .card.flipped {
-    background-color: #fff;
-    color: #333;
-  }
-  
-  .card.matched {
-    background-color: #28a745;
-    color: white;
-    cursor: default;
-  }
+h1 {
+	font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+	font-size: 60px;
+}
+
+.game-container {
+	display: flex;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.game-board {
+	display: grid;
+	grid-template-columns: repeat(4, 100px);
+	gap: 10px;
+}
+
+.card {
+	width: 100px;
+	height: 100px;
+	background-color: white;
+	color: black;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2em;
+	cursor: pointer;
+	border-radius: 8px;
+}
+.card:hover {
+	background-color: #9b9b9b;
+}
+
+.card.flipped {
+	background-color: #fff;
+	color: #333;
+}
+
+.card.matched {
+	background-color: #28a745;
+	color: white;
+	cursor: default;
+}
