@@ -1,7 +1,7 @@
-document.write("This is a JS code");
-fetch("http://localhost:3000/getData", {
-	method: "GET" // Specify the HTTP method
-});
+// document.write("This is a JS code");
+// fetch("http://localhost:3000/getData", {
+// 	method: "GET" // Specify the HTTP method
+// });
 
 //1. fetch atfhandelen oftwel de response die gegeven is een functie maken die check of alles klopt in de back-end
 //2. in website routes staat res.send ... (is de response).
