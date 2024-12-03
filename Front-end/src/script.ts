@@ -1,7 +1,14 @@
-// document.write("This is a JS code");
-// fetch("http://localhost:3000/getData", {
-// 	method: "GET" // Specify the HTTP method
-// });
+const inputField = document.getElementById('inputField') as HTMLInputElement;
+
+function handleSubmit(event: any) {
+  event.preventDefault();
+  const inputFieldValue = inputField.value;
+  if (inputFieldValue.trim() === '') {
+    console.log('No hint entered');
+  } else {
+    console.log('Hint entered:', inputFieldValue);
+  }
+}
 
 
 
