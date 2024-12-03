@@ -1,9 +1,10 @@
 const gameBoard = document.getElementById('gameBoard') as HTMLElement;
 const resetButton = document.getElementById('resetButton') as HTMLButtonElement;
 const objectBaseUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
+const queryObject = "sun";
 
 async function fetchGameCards() {
-    const searchUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=woman'; // Filter en Topic
+    const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=${queryObject}`; // Filter en Topic
     const cards = gameBoard.querySelectorAll('.card');
     cards.forEach(card => card.innerHTML = ''); // Clear board
 
