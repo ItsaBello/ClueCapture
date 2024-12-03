@@ -1,38 +1,38 @@
 <html>
-    <head>
-        <title>ClueCapture Game</title>
-        <link rel="stylesheet" href="../CSS/boardGameStyle.css">
-    </head>
+	<head>
+		<title>ClueCapture Game</title>
+		<link rel="stylesheet" href="../CSS/boardGameStyle.css" />
+	</head>
 
-    <body>
-        <h1>ClueCapture</h1>
-        <div class="game-board" id="gameBoard">
-            <!-- Each card in the board -->
-            <div class="card" data-name="A">🖤</div>
-            <div class="card" data-name="B">✦</div>
-            <div class="card" data-name="C">♋️</div>
-            <div class="card" data-name="D">☣️</div>
-            <div class="card" data-name="A">❌️</div>
-            <div class="card" data-name="B">💔️</div>
-            <div class="card" data-name="C">💬️</div>
-            <div class="card" data-name="D">⛔️</div>
-            <div class="card" data-name="E">🌐️</div>
-            <div class="card" data-name="F">🔔️</div>
-            <div class="card" data-name="G">◼️</div>
-            <div class="card" data-name="H">⚠️</div>
-            <div class="card" data-name="E">❕️</div>
-            <div class="card" data-name="F">⚪️</div>
-            <div class="card" data-name="G">🔸️</div>
-            <div class="card" data-name="H">🎵️</div>
-          </div>
-          <button id="resetButton">Reset Game</button>
-          
-          <form id="hintForm" onsubmit="return handleSubmit(event)">
-            <label id="inputLabel">Enter hint:</label>
-            <input id="inputField" type="text" />
-          </form>
+	<body>
+		<h1>Clue Capture</h1>
+		<div class="game-board" id="gameBoard">
+			<!-- Each card in the board -->
+			<div class="card" data-name="A">🖤</div>
+			<div class="card" data-name="B">✦</div>
+			<div class="card" data-name="C">♋️</div>
+			<div class="card" data-name="D">☣️</div>
+			<div class="card" data-name="A">❌️</div>
+			<div class="card" data-name="B">💔️</div>
+			<div class="card" data-name="C">💬️</div>
+			<div class="card" data-name="D">⛔️</div>
+			<div class="card" data-name="E">🌐️</div>
+			<div class="card" data-name="F">🔔️</div>
+			<div class="card" data-name="G">◼️</div>
+			<div class="card" data-name="H">⚠️</div>
+			<div class="card" data-name="E">❕️</div>
+			<div class="card" data-name="F">⚪️</div>
+			<div class="card" data-name="G">🔸️</div>
+			<div class="card" data-name="H">🎵️</div>
+		</div>
+		<button id="resetButton">Reset Game</button>
 
-          <script src="/Front-end/dist/script.js"></script>
-          <script src="/Front-end/dist/imageLoader.js"></script>
-    </body>
+		<form id="hintForm" onsubmit="return handleSubmit(event)">
+			<label id="inputLabel">Enter hint:</label>
+			<input id="inputField" type="text" />
+		</form>
+
+		<script src="/Front-end/dist/script.js"></script>
+		<script src="/Front-end/dist/imageLoader.js"></script>
+	</body>
 </html>
