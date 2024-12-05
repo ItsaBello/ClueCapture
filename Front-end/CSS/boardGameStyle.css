@@ -113,3 +113,41 @@ button:hover {
 	font-weight: bold;
 	margin-top: 10px; /* Adjust the space between the image and the text */
 }
+
+.image-container {
+	position: absolute;
+	top: 20px; /* Distance from the top edge of the screen */
+	right: 20px; /* Distance from the right edge of the screen */
+	display: flex;
+	justify-content: center; /* Center horizontally */
+	align-items: center; /* Center vertically */
+	width: 300px; /* Pas de breedte aan naar wens */
+	height: 200px; /* Pas de hoogte aan naar wens */
+	border: 2px solid white; /* Optionele rand */
+	overflow: hidden; /* Zorg dat de afbeelding niet buiten de container gaat */
+	border-radius: 8px; /* Optionele afgeronde hoeken */
+	background-color: #9ab9c1;
+}
+
+.image-container img {
+	position: absolute;
+	top: 5px;
+	width: 55%;
+	height: auto;
+}
+
+.image-caption {
+	position: absolute;
+	top: 220px; /* Distance from the top edge of the screen */
+	right: 175px; /* Distance from the right edge of the screen */
+	text-align: center;
+	color: white;
+	font-size: 24px;
+	font-weight: bold;
+	margin-top: 10px; /* Adjust the space between the image and the text */
+}
+
+button:disabled:hover {
+	background-color: #007bff;
+	cursor: default;
+}
