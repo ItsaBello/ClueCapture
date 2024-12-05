@@ -1,9 +1,10 @@
 const gameBoard = document.getElementById('gameBoard') as HTMLElement;
 const resetButton = document.getElementById('resetButton') as HTMLButtonElement;
 const objectBaseUrl = 'https://collectionapi.metmuseum.org/public/collection/v1/objects/';
-const queryObject = "sun";
+const queryObject = "stone";
 
 async function fetchGameCards() {
+    resetButton.disabled = true;
     const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=${queryObject}`; // Filter en Topic
     const cards = gameBoard.querySelectorAll('.card');
     cards.forEach(card => card.innerHTML = ''); // Clear board
@@ -28,21 +29,35 @@ async function fetchGameCards() {
         const validObjects = objectDetails.filter((data) => data && data.primaryImageSmall);
         const randomizedObjects = validObjects.sort(() => Math.random() - 0.5).slice(0, 16);
 
-        // Add the fetched images to the cards
-        randomizedObjects.forEach((object, index) => {
+        // Preload all images
+        type PreloadedImage = { img: HTMLImageElement; object: { primaryImageSmall: string; title?: string } };
+        const preloadedImages: PreloadedImage[] = await Promise.all(
+            randomizedObjects.map(
+                (object) => 
+                new Promise<PreloadedImage>((resolve, reject) => {
+                    const img = new Image();
+                    img.src = object.primaryImageSmall;
+                    img.alt = object.title || 'Artwork';
+
+                    img.onload = () => resolve({ img, object });
+                    img.onerror = () => reject(new Error(`Failed to load image: ${object.primaryImageSmall}`));
+                })
+            )
+        );
+
+        // Append all preloaded images to their respective cards
+        preloadedImages.forEach(({ img }, index) => {
             const card = cards[index];
-            const img = document.createElement('img');
-            img.src = object.primaryImageSmall;
-            img.alt = object.title || 'Artwork';
             card.appendChild(img);
         });
     } catch (error) {
         console.error('Error fetching game cards:', error);
     }
+    resetButton.disabled = false;
 }
 
 // Reset game board
 resetButton.addEventListener('click', fetchGameCards);
         
-// Initial board generation
-fetchGameCards();
+// // Initial board generation
+// fetchGameCards();

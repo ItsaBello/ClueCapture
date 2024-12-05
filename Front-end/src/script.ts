@@ -10,8 +10,6 @@ function handleSubmit(event: any) {
   }
 }
 
-
-
 //1. fetch atfhandelen oftwel de response die gegeven is een functie maken die check of alles klopt in de back-end
 //2. in website routes staat res.send ... (is de response).
 //3. response is String
