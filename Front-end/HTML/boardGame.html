@@ -27,15 +27,20 @@
 			<div class="card" data-name="H">🎵️</div>
 		</div>
 		<button id="resetButton">Reset Game</button>
+		<button id="rulesButton">Rules</button>
 
-		<div class="image-container">
+		<div class="image-container-right">
 			<img src="../Images/Clue Captain blue artboard.png" alt="CLUE CAPTAIN" />
 		</div>
+		<div class="image-container-left">
+			<img src="../Images/StickMan.png" alt="PLAYER ONE" />
+		</div>
 
-		<p class="image-caption">Clue Captain</p>
+		<p class="image-caption-right">Clue Captain</p>
+		<p class="image-caption-left">Player One</p>
 
 		<form id="hintForm" onsubmit="return handleSubmit(event)">
-			<label id="inputLabel">Enter hint:</label>
+			<label id="inputLabel">Enter Clue:</label>
 			<input id="inputField" type="text" />
 		</form>
 
