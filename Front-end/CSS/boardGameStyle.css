@@ -7,7 +7,7 @@ body {
 	font-style: normal;
 	background-color: #03363d;
 	color: white;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 h1 {
@@ -25,8 +25,9 @@ h1 {
 
 .game-board {
 	display: grid;
-	grid-template-columns: repeat(4, 200px);
+	grid-template-columns: repeat(4, 150px);
 	gap: 10px;
+	z-index: 1; /* Make sure the cards stay on top of any background elements */
 }
 
 .card {
@@ -81,8 +82,8 @@ button:hover {
 	background-color: #0056b3;
 }
 
-.image-container {
-	position: absolute;
+.image-container-right {
+	position: fixed;
 	top: 20px; /* Distance from the top edge of the screen */
 	right: 20px; /* Distance from the right edge of the screen */
 	display: flex;
@@ -96,15 +97,15 @@ button:hover {
 	background-color: #9ab9c1;
 }
 
-.image-container img {
+.image-container-right img {
 	position: absolute;
 	top: 5px;
 	width: 55%;
 	height: auto;
 }
 
-.image-caption {
-	position: absolute;
+.image-caption-right {
+	position: fixed;
 	top: 220px; /* Distance from the top edge of the screen */
 	right: 175px; /* Distance from the right edge of the screen */
 	text-align: center;
@@ -114,10 +115,10 @@ button:hover {
 	margin-top: 10px; /* Adjust the space between the image and the text */
 }
 
-.image-container {
-	position: absolute;
+.image-container-left {
+	position: fixed;
 	top: 20px; /* Distance from the top edge of the screen */
-	right: 20px; /* Distance from the right edge of the screen */
+	left: 20px; /* Distance from the right edge of the screen */
 	display: flex;
 	justify-content: center; /* Center horizontally */
 	align-items: center; /* Center vertically */
@@ -129,22 +130,114 @@ button:hover {
 	background-color: #9ab9c1;
 }
 
-.image-container img {
+.image-container-left img {
 	position: absolute;
-	top: 5px;
-	width: 55%;
+	top: 10px;
+	width: 70%;
 	height: auto;
 }
 
-.image-caption {
-	position: absolute;
+.image-caption-left {
+	position: fixed;
 	top: 220px; /* Distance from the top edge of the screen */
-	right: 175px; /* Distance from the right edge of the screen */
+	left: 20px; /* Distance from the right edge of the screen */
 	text-align: center;
 	color: white;
 	font-size: 24px;
 	font-weight: bold;
 	margin-top: 10px; /* Adjust the space between the image and the text */
+}
+
+#resetButton,
+#rulesButton,
+#inputField,
+#inputLabel {
+	position: fixed; /* Fix them to the viewport */
+	z-index: 2; /* Ensure they stay above the game board */
+}
+
+#resetButton {
+	position: fixed;
+	background-color: #9ab9c1; /* Bright red background */
+	color: #03363d; /* White text */
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	bottom: 20px; /* Distance from the top edge of the screen */
+	left: 20px; /* Distance from the right edge of the screen */
+	font-size: 18px; /* Slightly larger font */
+	font-weight: bold; /* Make the text bold */
+	border: 2px solid #03363d; /* Darker red border */
+	border-radius: 10px; /* Rounded corners */
+	display: flex; /* Flexbox for centering text */
+	align-items: center; /* Vertically center text */
+	justify-content: center; /* Horizontally center text */
+	cursor: pointer; /* Pointer cursor on hover */
+	transition: all 0.3s ease; /* Smooth transition effect */
+}
+
+/* Hover effect */
+#resetButton:hover {
+	background-color: #03363d; /* Lighter red on hover */
+	border-color: white; /* Slightly lighter border */
+	color: white;
+	transform: scale(1.1); /* Slightly increase size */
+}
+
+#rulesButton {
+	position: fixed;
+	background-color: #9ab9c1; /* Bright red background */
+	color: #03363d; /* White text */
+	width: 100px;
+	height: 100px;
+	position: absolute;
+	bottom: 20px; /* Distance from the top edge of the screen */
+	left: 140px; /* Distance from the right edge of the screen */
+	font-size: 18px; /* Slightly larger font */
+	font-weight: bold; /* Make the text bold */
+	border: 2px solid #03363d; /* Darker red border */
+	border-radius: 10px; /* Rounded corners */
+	display: flex; /* Flexbox for centering text */
+	align-items: center; /* Vertically center text */
+	justify-content: center; /* Horizontally center text */
+	cursor: pointer; /* Pointer cursor on hover */
+	transition: all 0.3s ease; /* Smooth transition effect */
+}
+
+/* Hover effect */
+#rulesButton:hover {
+	background-color: #03363d; /* Lighter red on hover */
+	border-color: white; /* Slightly lighter border */
+	color: white;
+	transform: scale(1.1); /* Slightly increase size */
+}
+
+#inputField {
+	position: fixed;
+	width: 300px; /* Set the width of the text field */
+	height: 40px; /* Set the height */
+	position: absolute;
+	bottom: 25px; /* Distance from the top edge of the screen */
+	right: 25px; /* Distance from the right edge of the screen */
+	border: 2px solid #03363d; /* Border color */
+	border-radius: 8px; /* Rounded corners */
+	padding: 0 10px; /* Padding inside the text field */
+	font-size: 16px; /* Font size of the text */
+	font-family: "owners", sans-serif; /* Match the font with your design */
+	background-color: #f0f0f0; /* Light background */
+	color: #03363d; /* Text color */
+	transition: all 0.3s ease; /* Smooth transition effect */
+}
+
+#inputLabel {
+	position: fixed;
+	font-size: 24px;
+	font-family: "owners", sans-serif;
+	color: white;
+	position: absolute;
+	bottom: 20px; /* Distance from the top edge of the screen */
+	right: 330px; /* Distance from the right edge of the screen */
+	margin-bottom: 10px; /* Add space between label and input field */
 }
 
 button:disabled:hover {
