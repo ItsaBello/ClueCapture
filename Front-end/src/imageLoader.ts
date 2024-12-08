@@ -5,6 +5,7 @@ const queryObject = "stone";
 
 async function fetchGameCards() {
 	resetButton.disabled = true;
+	resetButton.classList.add("loading");
 	const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=${queryObject}`; // Filter en Topic
 	const cards = gameBoard.querySelectorAll(".card");
 	cards.forEach((card) => (card.innerHTML = "")); // Clear board
@@ -56,8 +57,10 @@ async function fetchGameCards() {
 		});
 	} catch (error) {
 		console.error("Error fetching game cards:", error);
+	} finally {
+		resetButton.disabled = false;
+		resetButton.classList.remove("loading");
 	}
-	resetButton.disabled = false;
 }
 
 // Reset game board
