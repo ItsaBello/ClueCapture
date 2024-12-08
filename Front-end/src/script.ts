@@ -1,20 +1,26 @@
-const inputField = document.getElementById('inputField') as HTMLInputElement;
+function hintFormSubmit() {
 
-function handleSubmit(event: any) {
-  event.preventDefault();
-  const inputFieldValue = inputField.value;
-  if (inputFieldValue.trim() === '') {
-    console.log('No hint entered');
-  } else {
-    console.log('Hint entered:', inputFieldValue);
+  const inputField = document.getElementById('inputField') as HTMLInputElement | null;
+  const form = document.getElementById('hintForm') as HTMLFormElement | null;
+
+  if (!inputField || !form) {
+    console.error('Required elements are missing.');
+    return;
   }
+
+  inputField.addEventListener('input', () => {
+    inputField.value = inputField.value.replace(/\s/g, '');
+  });
+
+  form.addEventListener('submit', (event: Event) => {
+    event.preventDefault();
+    const inputFieldValue = inputField.value.trim();
+    if (inputFieldValue === '') {
+      console.log('Input cannot be empty');
+    } else {
+      console.log('Hint entered:', inputFieldValue);
+    }
+  });
 }
 
-//1. fetch atfhandelen oftwel de response die gegeven is een functie maken die check of alles klopt in de back-end
-//2. in website routes staat res.send ... (is de response).
-//3. response is String
-//4. haal de response uit de json --> return response.json()
-//5. deel de response in de kleinste delen bv. response.status / !response.ok
-//6. return response.json();
-//7. .then (data =>              oftewel wat ga je doen met de opgevraagde data
-//8. Je wilt de String uit website routes op de website zien.
+document.addEventListener('DOMContentLoaded', hintFormSubmit);
