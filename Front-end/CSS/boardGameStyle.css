@@ -7,7 +7,6 @@ body {
 	font-style: normal;
 	background-color: #03363d;
 	color: white;
-	/* overflow: hidden; */
 }
 
 h1 {
@@ -238,6 +237,68 @@ button:hover {
 	bottom: 20px; /* Distance from the top edge of the screen */
 	right: 330px; /* Distance from the right edge of the screen */
 	margin-bottom: 10px; /* Add space between label and input field */
+}
+
+/* Modal background */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Fixed positioning to cover the entire screen */
+	z-index: 1; /* Ensures it's on top of the page content */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+	overflow: auto; /* Prevents content from overflowing the modal */
+}
+
+/* Modal content */
+.modal-content {
+	background-color: #fff;
+	margin: 15% auto; /* Centers the modal */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 60%; /* You can adjust the width */
+	border-radius: 10px;
+	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Close button */
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.modal-content h2 {
+	font-size: 24px;
+	color: #03363d; /* Set a color for the heading */
+	font-weight: bold;
+	text-align: center; /* Center align the heading */
+	margin-bottom: 20px; /* Add space below the heading */
+}
+
+/* List of rules */
+.modal-content ul {
+	list-style-type: none; /* Remove default bullets */
+	padding-left: 0;
+}
+
+.modal-content li {
+	font-family: "owners-wide", sans-serif;
+	font-weight: 200;
+	font-style: normal;
+	font-size: 18px; /* Slightly larger text for rules */
+	color: #333; /* Dark text color for readability */
+	margin-bottom: 10px; /* Space between each rule */
 }
 
 button:disabled:hover {
