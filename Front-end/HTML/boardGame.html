@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>ClueCapture Game</title>
+		<title>Clue Capture Game</title>
 		<link rel="stylesheet" href="../CSS/boardGameStyle.css" />
 		<link rel="stylesheet" href="https://use.typekit.net/jfe7dsa.css" />
 	</head>
@@ -37,7 +37,15 @@
 		</div>
 
 		<p class="image-caption-right">Clue Captain</p>
-		<p class="image-caption-left">Player One</p>
+
+		<p id="playerName" class="image-caption-left"> </p>
+    <script>
+      const name = localStorage.getItem('playerName') || 'Player one'; 
+      const playerNameElement = document.getElementById('playerName');
+      if (playerNameElement) {
+          playerNameElement.textContent = name;}
+          //Difficult to put in TS so for now in HTML
+  </script>
 
 		<form id="hintForm">
 			<label id="inputLabel">Enter Clue:</label>
