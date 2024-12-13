@@ -39,12 +39,23 @@
 		<p class="image-caption-right">Clue Captain</p>
 
 		<p id="playerName" class="image-caption-left"> </p>
+		<p id="scoreCounter" class="score-caption-left">Score: 0</p>
     <script>
       const name = localStorage.getItem('playerName') || 'Player one'; 
       const playerNameElement = document.getElementById('playerName');
       if (playerNameElement) {
           playerNameElement.textContent = name;}
           //Difficult to put in TS so for now in HTML
+
+		  // Initialize score
+	let score = 0;
+	const scoreCounterElement = document.getElementById('scoreCounter');
+	function updateScore(newScore) {
+		score = newScore;
+		if (scoreCounterElement) {
+			scoreCounterElement.textContent = `Score: ${score}`;
+		}
+	}
   </script>
 
 		<form id="hintForm">
