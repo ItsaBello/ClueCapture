@@ -336,3 +336,23 @@ button:disabled:hover {
 		transform: rotate(360deg);
 	}
 }
+
+/* Standaard dropdown styling */
+#numberOfcards {
+	position: absolute;
+	bottom: 75px; /* Distance from the top edge of the screen */
+	right: 120px;
+	width: 100px; /* Breedte van de dropdown */
+	padding: 10px; /* Binnenruimte */
+	font-size: 16px; /* Tekstgrootte */
+	border-radius: 8px; /* Afronde hoeken */
+	background-color: #f9f9f9; /* Achtergrondkleur */
+	color: #333; /* Tekstkleur */
+	appearance: none; /* Verberg standaard browserpijl */
+	cursor: pointer; /* Pointer-cursor bij hover */
+}
+
+#numberOfcards:focus {
+	outline: none;
+	border-color: #0056b3;
+}

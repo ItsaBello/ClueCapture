@@ -38,18 +38,25 @@
 
 		<p class="image-caption-right">Clue Captain</p>
 
-		<p id="playerName" class="image-caption-left"> </p>
-    <script>
-      const name = localStorage.getItem('playerName') || 'Player one'; 
-      const playerNameElement = document.getElementById('playerName');
-      if (playerNameElement) {
-          playerNameElement.textContent = name;}
-          //Difficult to put in TS so for now in HTML
-  </script>
+		<p id="playerName" class="image-caption-left"></p>
+		<script>
+			const name = localStorage.getItem("playerName") || "Player one";
+			const playerNameElement = document.getElementById("playerName");
+			if (playerNameElement) {
+				playerNameElement.textContent = name;
+			}
+			//Difficult to put in TS so for now in HTML
+		</script>
 
 		<form id="hintForm">
 			<label id="inputLabel">Enter Clue:</label>
 			<input id="inputField" type="text" />
+			<select name="numberOfcards" id="numberOfcards">
+				<option value="1">1</option>
+				<option value="2">2</option>
+				<option value="3">3</option>
+				<option value="4">4</option>
+			</select>
 		</form>
 
 		<div id="rulesModal" class="modal">
