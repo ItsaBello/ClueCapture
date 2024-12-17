@@ -2,6 +2,15 @@ const gameBoard = document.getElementById("gameBoard") as HTMLElement;
 const resetButton = document.getElementById("resetButton") as HTMLButtonElement;
 const objectBaseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects/";
 const queryObject = "stone";
+const cardImageMap = new Map<number, string>();
+
+export function getCardImageMap() {
+	return cardImageMap;
+  }
+  
+export function getImageUrlByIndex(index: number): string | undefined {
+	return cardImageMap.get(index);
+  }
 
 async function fetchGameCards() {
 	resetButton.disabled = true;
@@ -51,13 +60,18 @@ async function fetchGameCards() {
 		);
 
 		// Append all preloaded images to their respective cards
-		preloadedImages.forEach(({ img }, index) => {
+		preloadedImages.forEach(({ img, object }, index) => {
 			const card = cards[index];
 			card.appendChild(img);
+
+			cardImageMap.set(index, object.primaryImageSmall);
 		});
 	} catch (error) {
 		console.error("Error fetching game cards:", error);
 	} finally {
+		cardImageMap.forEach((url, index) => {
+			console.log(`Card Index: ${index}, Image URL: ${url}`);
+		});
 		resetButton.disabled = false;
 		resetButton.classList.remove("loading");
 	}
@@ -67,4 +81,4 @@ async function fetchGameCards() {
 resetButton.addEventListener("click", fetchGameCards);
 
 // // Initial board generation
-fetchGameCards();
+// fetchGameCards();
