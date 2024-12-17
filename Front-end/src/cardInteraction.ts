@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	const clickedCards: string[] = []; // Array to track clicked cards
 	let score = 0; // Initialize score
 	const scoreCounterElement = document.getElementById('scoreCounter');
+	const numberOfcards = document.getElementById('numberOfCards')as HTMLSelectElement;
 
 
 	// Function to update score display
