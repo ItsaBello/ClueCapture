@@ -67,4 +67,4 @@ async function fetchGameCards() {
 resetButton.addEventListener("click", fetchGameCards);
 
 // // Initial board generation
-// fetchGameCards();
+fetchGameCards();

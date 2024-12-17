@@ -75,7 +75,7 @@ h1 {
 }
 
 .card.clicked {
-	outline: 5px solid white; /* Adjust the color to your preference */
+	outline: 5px solid #e6c200; /* Adjust the color to your preference */
 }
 
 .card.clicked img {
@@ -161,6 +161,17 @@ button:hover {
 	font-size: 24px;
 	font-weight: bold;
 	margin-top: 10px; /* Adjust the space between the image and the text */
+}
+
+.score-caption-left {
+	position: absolute;
+	top: 260px; /* Adjust as needed to position under playerName */
+	left: 20px; /* Align with the image-caption-left */
+	text-align: center;
+	color: white;
+	font-size: 20px; /* Adjust font size for visibility */
+	font-weight: bold;
+	margin-top: 10px; /* Space between the elements */
 }
 
 #resetButton,
@@ -344,7 +355,7 @@ button:disabled:hover {
 }
 
 /* Standaard dropdown styling */
-#numberOfcards {
+#numberOfCards {
 	position: absolute;
 	bottom: 75px; /* Distance from the top edge of the screen */
 	right: 120px;
@@ -354,7 +365,6 @@ button:disabled:hover {
 	border-radius: 8px; /* Afronde hoeken */
 	background-color: #f9f9f9; /* Achtergrondkleur */
 	color: #333; /* Tekstkleur */
-	appearance: none; /* Verberg standaard browserpijl */
 	cursor: pointer; /* Pointer-cursor bij hover */
 }
 
