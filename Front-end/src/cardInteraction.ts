@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
 				return;
 			}
 
-			// Prevent adding more than 4 cards
+			// Prevent adding more than the selected number of cards
 			if (clickedCards.length >= selectedValue) {
 				console.log(`You can only select up to ${selectedValue} cards.`);
 				return;
@@ -34,6 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
 		});
 	});
 
+	// Clear the clicked cards when the number of cards changes
 	numberOfcards.addEventListener("change", () => {
 		clickedCards.length = 0;
 		cards.forEach((card) => {
