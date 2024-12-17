@@ -69,7 +69,7 @@ h1 {
 }
 
 .card.clicked {
-	outline: 5px solid white; /* Adjust the color to your preference */
+	outline: 5px solid #e6c200; /* Adjust the color to your preference */
 }
 
 .card.clicked img {
