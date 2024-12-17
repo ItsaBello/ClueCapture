@@ -38,15 +38,25 @@
 
 		<p class="image-caption-right">Clue Captain</p>
 
-		<p id="playerName" class="image-caption-left"></p>
-		<script>
-			const name = localStorage.getItem("playerName") || "Player one";
-			const playerNameElement = document.getElementById("playerName");
-			if (playerNameElement) {
-				playerNameElement.textContent = name;
-			}
-			//Difficult to put in TS so for now in HTML
-		</script>
+		<p id="playerName" class="image-caption-left"> </p>
+		<p id="scoreCounter" class="score-caption-left">Score: 0</p>
+    <script>
+      const name = localStorage.getItem('playerName') || 'Player one'; 
+      const playerNameElement = document.getElementById('playerName');
+      if (playerNameElement) {
+          playerNameElement.textContent = name;}
+          //Difficult to put in TS so for now in HTML
+
+		  // Initialize score
+	let score = 0;
+	const scoreCounterElement = document.getElementById('scoreCounter');
+	function updateScore(newScore) {
+		score = newScore;
+		if (scoreCounterElement) {
+			scoreCounterElement.textContent = `Score: ${score}`;
+		}
+	}
+  </script>
 
 		<form id="hintForm">
 			<label id="inputLabel">Enter Clue:</label>
@@ -72,9 +82,9 @@
 			</div>
 		</div>
 
-		<script src="/Front-end/dist/script.js"></script>
-		<script src="/Front-end/dist/imageLoader.js"></script>
-		<script src="/Front-end/dist/rulesButton.js"></script>
-		<script src="/Front-end/dist/cardInteraction.js"></script>
+		<script src="../dist/script.js"></script>
+		<script src="../dist/imageLoader.js"></script>
+		<script src="../dist/rulesButton.js"></script>
+		<script src="../dist/cardInteraction.js"></script>
 	</body>
 </html>
