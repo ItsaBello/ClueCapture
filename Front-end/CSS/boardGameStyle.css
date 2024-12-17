@@ -157,6 +157,17 @@ button:hover {
 	margin-top: 10px; /* Adjust the space between the image and the text */
 }
 
+.score-caption-left {
+	position: absolute;
+	top: 260px; /* Adjust as needed to position under playerName */
+	left: 20px; /* Align with the image-caption-left */
+	text-align: center;
+	color: white;
+	font-size: 20px; /* Adjust font size for visibility */
+	font-weight: bold;
+	margin-top: 10px; /* Space between the elements */
+}
+
 #resetButton,
 #rulesButton,
 #inputField,
