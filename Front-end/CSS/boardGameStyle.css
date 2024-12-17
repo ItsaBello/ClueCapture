@@ -349,7 +349,7 @@ button:disabled:hover {
 }
 
 /* Standaard dropdown styling */
-#numberOfcards {
+#numberOfCards {
 	position: absolute;
 	bottom: 75px; /* Distance from the top edge of the screen */
 	right: 120px;
