@@ -1,6 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
 	const cards = document.querySelectorAll<HTMLDivElement>(".card");
 	const clickedCards: string[] = []; // Array to track clicked cards
+	let score = 0; // Initialize score
+	const scoreCounterElement = document.getElementById('scoreCounter');
+
+
+	// Function to update score display
+	function updateScore(newScore: number) {
+		score = newScore;
+		if (scoreCounterElement) {
+			scoreCounterElement.textContent = `Score: ${score}`;
+		}
+	}
+
+	// Set initial score
+	updateScore(score);
 
 	cards.forEach((card) => {
 		card.addEventListener("click", () => {
@@ -27,7 +41,24 @@ document.addEventListener("DOMContentLoaded", () => {
 				clickedCards.push(cardName); // Add card to the array
 				card.classList.add("clicked"); // Add visual border
 				console.log(`Clicked cards: ${clickedCards.join(", ")}`);
+
+				// Increase score
+				updateScore(score + 1);
 			}
 		});
 	});
+
+	// Reset functionality for when player interacts with resetButton
+	resetButton.addEventListener("click", () => {
+		// Reset score
+		updateScore(0);
+
+		//Clear clicked cards array
+		clickedCards.length = 0;
+
+		// Remove clicked class from all cards
+		cards.forEach((card) => card.classList.remove("clicked"));
+
+		console.log("Game reset. Score is now 0.");
+	})
 });
