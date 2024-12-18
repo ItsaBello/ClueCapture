@@ -448,3 +448,24 @@ button:disabled:hover {
 	bottom: 80px; /* Distance from the top edge of the screen */
 	right: 257px; /* Distance from the right edge of the screen */
 }
+
+.cloud {
+	position: absolute;
+	top: 25px; /* Adjust to position above the avatar */
+	right: 25%;
+	transform: translateX(-50%); /* Center the cloud horizontally */
+	background-color: #fff;
+	padding: 8px 20px;
+	border-radius: 14px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	max-width: 200px;
+	text-align: center;
+	display: none;
+  }
+  
+  /* Text inside the cloud */
+  .cloud-text {
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+  }

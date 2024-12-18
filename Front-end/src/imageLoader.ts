@@ -3,6 +3,11 @@ const resetButton = document.getElementById("resetButton") as HTMLButtonElement;
 const objectBaseUrl = "https://collectionapi.metmuseum.org/public/collection/v1/objects/";
 const queryObject = "stone";
 const cardImageMap = new Map<number, string>();
+const cloud = document.getElementById("cloud") as HTMLSpanElement;
+
+export function getGameCatagory() {
+	return "standard game";
+}
 
 export function getCardImageMap() {
 	return cardImageMap;
@@ -74,6 +79,7 @@ async function fetchGameCards() {
 		});
 		resetButton.disabled = false;
 		resetButton.classList.remove("loading");
+		cloud.style.display = 'block';
 	}
 }
 

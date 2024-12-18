@@ -1,4 +1,4 @@
-import { getCardImageMap, getImageUrlByIndex } from './imageLoader';
+import { getCardImageMap, getImageUrlByIndex } from './imageLoader.js';
 
 const clickedCards: string[] = []; // Array to track clicked cards
 const indexOfClickedCards: number[] = [];
