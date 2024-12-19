@@ -19,7 +19,6 @@ body {
 h1 {
 	font-family: "owners", sans-serif;
 	font-weight: 500;
-	font-style: medium;
 	font-size: 60px;
 }
 
@@ -33,10 +32,10 @@ h1 {
 	display: grid;
 	grid-template-columns: repeat(4, 150px);
 	gap: 10px;
-	z-index: 1; /* Make sure the cards stay on top of any background elements */
 }
 
 .card {
+	position: relative;
 	width: 125px;
 	height: 125px;
 	background-color: white;
@@ -47,9 +46,12 @@ h1 {
 	font-size: 2em;
 	cursor: pointer;
 	border-radius: 8px;
-	padding: 2px 2px;
+	padding: 2px;
 	margin: 10px;
 	box-sizing: border-box;
+	overflow: hidden;
+	perspective: 1000px;
+	transition: transform 0.6s;
 }
 
 .card img {
@@ -57,21 +59,11 @@ h1 {
 	width: 120px;
 	height: 120px;
 	border-radius: 8px;
+	z-index: 8;
 }
 
 .card:hover {
 	background-color: #028090;
-}
-
-.card.flipped {
-	background-color: #fff;
-	color: #333;
-}
-
-.card.matched {
-	background-color: #28a745;
-	color: white;
-	cursor: default;
 }
 
 .card.clicked {
@@ -82,25 +74,65 @@ h1 {
 	opacity: 0.5;
 }
 
-button {
-	margin-top: 20px;
-	padding: 10px 20px;
-	font-size: 16px;
-	cursor: pointer;
-	background-color: #007bff;
-	color: white;
-	border: none;
-	border-radius: 5px;
-}
-
-button:hover {
-	background-color: #0056b3;
-}
-
-.image-container-right {
+.card-inner {
 	position: relative;
-	top: -650px; /* Distance from the top edge of the screen */
-	right: -550px; /* Distance from the right edge of the screen */
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	transition: transform 0.6s;
+}
+
+.card.flipped .card-inner {
+	transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+
+.card-front {
+	background: white;
+}
+
+.card-back {
+	background-color: #f8f8f8;
+	opacity: 100;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transform: rotateY(180deg);
+	font-family: "owners", sans-serif;
+	font-weight: 200;
+	font-style: normal;
+	font-size: 16px;
+	color: #03363d;
+}
+
+.info-button {
+	position: absolute;
+	top: 5px;
+	right: 5px;
+	background-color: white;
+	color: black;
+	border: none;
+	border-radius: 50%;
+	width: 25px;
+	height: 25px;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.hidden {
+	display: none;
+}
+
+.image-container-left,
+.image-container-right {
+	position: absolute;
 	display: flex;
 	justify-content: center; /* Center horizontally */
 	align-items: center; /* Center vertically */
@@ -110,57 +142,43 @@ button:hover {
 	overflow: hidden; /* Zorg dat de afbeelding niet buiten de container gaat */
 	border-radius: 8px; /* Optionele afgeronde hoeken */
 	background-color: #9ab9c1;
+	top: 20px;
 }
 
+.image-container-left {
+	left: 20px;
+}
+
+.image-container-right {
+	right: 20px;
+}
+
+.image-container-left img,
 .image-container-right img {
 	position: absolute;
-	top: 5px;
+	top: 60%;
+	transform: translateY(-50%);
 	width: 55%;
 	height: auto;
 }
 
+.image-caption-left,
 .image-caption-right {
-	position: relative;
-	top: -660px; /* Distance from the top edge of the screen */
-	right: -550px; /* Distance from the right edge of the screen */
+	position: absolute;
 	text-align: center;
 	color: white;
 	font-size: 24px;
 	font-weight: bold;
 	margin-top: 10px; /* Adjust the space between the image and the text */
-}
-
-.image-container-left {
-	position: relative;
-	top: -900px; /* Distance from the top edge of the screen */
-	left: -550px; /* Distance from the right edge of the screen */
-	display: flex;
-	justify-content: center; /* Center horizontally */
-	align-items: center; /* Center vertically */
-	width: 300px; /* Pas de breedte aan naar wens */
-	height: 200px; /* Pas de hoogte aan naar wens */
-	border: 2px solid white; /* Optionele rand */
-	overflow: hidden; /* Zorg dat de afbeelding niet buiten de container gaat */
-	border-radius: 8px; /* Optionele afgeronde hoeken */
-	background-color: #9ab9c1;
-}
-
-.image-container-left img {
-	position: absolute;
-	top: 10px;
-	width: 70%;
-	height: auto;
+	top: 215px;
 }
 
 .image-caption-left {
-	position: relative;
-	top: -910px; /* Distance from the top edge of the screen */
-	left: -670px; /* Distance from the right edge of the screen */
-	text-align: center;
-	color: white;
-	font-size: 24px;
-	font-weight: bold;
-	margin-top: 10px; /* Adjust the space between the image and the text */
+	left: 20px;
+}
+
+.image-caption-right {
+	right: 20px;
 }
 
 .score-caption-left {
@@ -182,7 +200,8 @@ button:hover {
 	z-index: 2; /* Ensure they stay above the game board */
 }
 
-#resetButton {
+#resetButton,
+#rulesButton {
 	background-color: #9ab9c1; /* Bright red background */
 	color: #03363d; /* White text */
 	width: 100px;
@@ -200,38 +219,23 @@ button:hover {
 	transition: all 0.3s ease; /* Smooth transition effect */
 }
 
-/* Hover effect */
-#resetButton:hover {
-	background-color: #03363d; /* Lighter red on hover */
-	border-color: white; /* Slightly lighter border */
-	color: white;
-	transform: scale(1.1); /* Slightly increase size */
-}
-
 #rulesButton {
-	background-color: #9ab9c1; /* Bright red background */
-	color: #03363d; /* White text */
-	width: 100px;
-	height: 100px;
-	bottom: 20px; /* Distance from the top edge of the screen */
 	left: 140px; /* Distance from the right edge of the screen */
-	font-size: 18px; /* Slightly larger font */
-	font-weight: bold; /* Make the text bold */
-	border: 2px solid #03363d; /* Darker red border */
-	border-radius: 10px; /* Rounded corners */
-	display: flex; /* Flexbox for centering text */
-	align-items: center; /* Vertically center text */
-	justify-content: center; /* Horizontally center text */
-	cursor: pointer; /* Pointer cursor on hover */
-	transition: all 0.3s ease; /* Smooth transition effect */
 }
 
 /* Hover effect */
+#resetButton:hover,
 #rulesButton:hover {
 	background-color: #03363d; /* Lighter red on hover */
 	border-color: white; /* Slightly lighter border */
 	color: white;
 	transform: scale(1.1); /* Slightly increase size */
+}
+
+#inputField,
+#inputLabel {
+	position: absolute;
+	font-family: "owners", sans-serif;
 }
 
 #inputField {
@@ -243,27 +247,23 @@ button:hover {
 	border-radius: 8px; /* Rounded corners */
 	padding: 0 10px; /* Padding inside the text field */
 	font-size: 16px; /* Font size of the text */
-	font-family: "owners", sans-serif; /* Match the font with your design */
 	background-color: #f0f0f0; /* Light background */
 	color: #03363d; /* Text color */
 	transition: all 0.3s ease; /* Smooth transition effect */
 }
 
 #inputLabel {
-	position: absolute;
 	font-size: 24px;
-	font-family: "owners", sans-serif;
 	color: white;
 	bottom: 20px; /* Distance from the top edge of the screen */
 	right: 330px; /* Distance from the right edge of the screen */
 	margin-bottom: 10px; /* Add space between label and input field */
 }
 
-/* Modal background */
 .modal {
 	display: none; /* Hidden by default */
-	position: absolute; /* Fixed positioning to cover the entire screen */
-	z-index: 1; /* Ensures it's on top of the page content */
+	position: absolute;
+	z-index: 1;
 	left: 0;
 	top: 0;
 	width: 100%; /* Full width */
@@ -315,7 +315,6 @@ button:hover {
 .modal-content li {
 	font-family: "owners-wide", sans-serif;
 	font-weight: 200;
-	font-style: normal;
 	font-size: 18px; /* Slightly larger text for rules */
 	color: #333; /* Dark text color for readability */
 	margin-bottom: 10px; /* Space between each rule */
@@ -368,7 +367,7 @@ button:disabled:hover {
 	cursor: pointer; /* Pointer-cursor bij hover */
 }
 
-#numberOfcards:focus {
+#numberOfCards:focus {
 	outline: none;
 	border-color: #0056b3;
 }
