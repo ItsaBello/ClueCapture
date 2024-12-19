@@ -24,6 +24,27 @@ const queryOptions = [
   "The American Wing"
 ];
 
+const metAPI = {
+    searchUrl: (query: string) => 
+        `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=${query}`,
+    objectUrl: (id: string) => 
+        `https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`,
+    extractImages: (data: any) => 
+        ({ imageUrl: data.primaryImageSmall, title: data.title }),
+};
+
+const clevelandAPI = {
+    searchUrl: (query: string) => 
+        `https://openaccess-api.clevelandart.org/api/artworks/?q=${query}&has_image=1&`,
+    objectUrl: null, // Cleveland API includes all data in search response
+    extractImages: (data: any) => 
+        ({ imageUrl: data.images.web.url, title: data.title }),
+};
+
+const selectedApi = localStorage.getItem('selectedApi') || 'met';
+const api = selectedApi === 'cleveland' ? clevelandAPI : metAPI;
+
+
 async function fetchGameCards() {
     resetButton.disabled = true;
     resetButton.classList.add("loading");

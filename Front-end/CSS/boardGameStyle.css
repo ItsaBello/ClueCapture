@@ -1,3 +1,9 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
 body {
 	position: relative;
 	display: flex;
@@ -69,7 +75,7 @@ h1 {
 }
 
 .card.clicked {
-	outline: 5px solid white; /* Adjust the color to your preference */
+	outline: 5px solid #e6c200; /* Adjust the color to your preference */
 }
 
 .card.clicked img {
@@ -92,9 +98,9 @@ button:hover {
 }
 
 .image-container-right {
-	position: absolute;
-	top: 20px; /* Distance from the top edge of the screen */
-	right: 20px; /* Distance from the right edge of the screen */
+	position: relative;
+	top: -650px; /* Distance from the top edge of the screen */
+	right: -550px; /* Distance from the right edge of the screen */
 	display: flex;
 	justify-content: center; /* Center horizontally */
 	align-items: center; /* Center vertically */
@@ -114,9 +120,9 @@ button:hover {
 }
 
 .image-caption-right {
-	position: absolute;
-	top: 220px; /* Distance from the top edge of the screen */
-	right: 175px; /* Distance from the right edge of the screen */
+	position: relative;
+	top: -660px; /* Distance from the top edge of the screen */
+	right: -550px; /* Distance from the right edge of the screen */
 	text-align: center;
 	color: white;
 	font-size: 24px;
@@ -125,9 +131,9 @@ button:hover {
 }
 
 .image-container-left {
-	position: absolute;
-	top: 20px; /* Distance from the top edge of the screen */
-	left: 20px; /* Distance from the right edge of the screen */
+	position: relative;
+	top: -900px; /* Distance from the top edge of the screen */
+	left: -550px; /* Distance from the right edge of the screen */
 	display: flex;
 	justify-content: center; /* Center horizontally */
 	align-items: center; /* Center vertically */
@@ -147,14 +153,25 @@ button:hover {
 }
 
 .image-caption-left {
-	position: absolute;
-	top: 220px; /* Distance from the top edge of the screen */
-	left: 20px; /* Distance from the right edge of the screen */
+	position: relative;
+	top: -910px; /* Distance from the top edge of the screen */
+	left: -670px; /* Distance from the right edge of the screen */
 	text-align: center;
 	color: white;
 	font-size: 24px;
 	font-weight: bold;
 	margin-top: 10px; /* Adjust the space between the image and the text */
+}
+
+.score-caption-left {
+	position: relative;
+	top: -910px; /* Adjust as needed to position under playerName */
+	left: -690px; /* Align with the image-caption-left */
+	text-align: center;
+	color: white;
+	font-size: 20px; /* Adjust font size for visibility */
+	font-weight: bold;
+	margin-top: 10px; /* Space between the elements */
 }
 
 #resetButton,
@@ -338,7 +355,7 @@ button:disabled:hover {
 }
 
 /* Standaard dropdown styling */
-#numberOfcards {
+#numberOfCards {
 	position: absolute;
 	bottom: 75px; /* Distance from the top edge of the screen */
 	right: 120px;
@@ -348,11 +365,18 @@ button:disabled:hover {
 	border-radius: 8px; /* Afronde hoeken */
 	background-color: #f9f9f9; /* Achtergrondkleur */
 	color: #333; /* Tekstkleur */
-	appearance: none; /* Verberg standaard browserpijl */
 	cursor: pointer; /* Pointer-cursor bij hover */
 }
 
 #numberOfcards:focus {
 	outline: none;
 	border-color: #0056b3;
+}
+@media (max-width: 1100px) {
+	.image-container-left {
+		display: none;
+	}
+	.image-container-right {
+		display: none;
+	}
 }
