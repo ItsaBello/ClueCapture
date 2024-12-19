@@ -164,9 +164,9 @@ button:hover {
 }
 
 .score-caption-left {
-	position: absolute;
-	top: 260px; /* Adjust as needed to position under playerName */
-	left: 20px; /* Align with the image-caption-left */
+	position: relative;
+	top: -910px; /* Adjust as needed to position under playerName */
+	left: -690px; /* Align with the image-caption-left */
 	text-align: center;
 	color: white;
 	font-size: 20px; /* Adjust font size for visibility */
