@@ -105,16 +105,21 @@ async function fetchGameCards() {
 		);
 
 		// Append all preloaded images to their respective cards
-		preloadedImages.forEach(({ img }, index) => {
+		preloadedImages.forEach(({ img, object }, index) => {
 			const card = cards[index];
 			card.appendChild(img);
+
+			cardImageMap.set(index, object.primaryImageSmall);
 		});
 	} catch (error) {
 		console.error("Error fetching game cards:", error);
 	} finally {
+		cardImageMap.forEach((url, index) => {
+			console.log(`Card Index: ${index}, Image URL: ${url}`);
+		});
 		resetButton.disabled = false;
 		resetButton.classList.remove("loading");
-		cloud.style.display = 'block';	
+		cloud.style.display = 'block';
 	}
 }
 
