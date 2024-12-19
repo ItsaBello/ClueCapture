@@ -1,7 +1,7 @@
 const sequelize = require('../database.js');
-const { Game, Hint, Image } = require('../models');
+const { Game, Hint, Image, ImageHint } = require('../models');
 
-async function submitHint(images, hintText, gameCategory) {
+async function submitHint(images, hintImages, hintText, gameCategory) {
     let transaction;
   
     try {
@@ -22,18 +22,48 @@ async function submitHint(images, hintText, gameCategory) {
             },
             { transaction }
         );
-  
+
         // Insert all images into the Images table first (even those not part of the hint)
         const allImageInstances = await Promise.all(
             images.map((imageUrl) => Image.create({ image_url: imageUrl, game_id: game.game_id }, { transaction }))
         );
-  
+
+        // Prepare to associate the hint with specific images (from the hintImages array)
+        const hintImageInstances = [];
+
+        // Find the image instances for the URLs in hintImages
+        await Promise.all(
+            hintImages.map(async (url) => {
+                // Find the image instance from the allImageInstances array
+                const imageInstance = allImageInstances.find(img => img.image_url === url);
+                if (imageInstance) {
+                    hintImageInstances.push(imageInstance);  // Collect image instances that will be associated with the hint
+
+                    // Create the ImageHint join table entry
+                    await ImageHint.create({
+                        hint_id: hint.hint_id,  // Use the hint's id
+                        image_id: imageInstance.image_id  // Use the image's id
+                    }, { transaction });
+                }
+            })
+        );
+
+        // hintImageIds = {};
+
+        // hintImages.forEach( url => {
+        //     hintImageIds = allImageInstances.find(url => url.image_url === url);
+        //     console.log(hintImageIds);
+        //     ImageHint.create({
+        //         hint_id: hint.hint_id,  // Use the hint's id
+        //         image_id: hintImageIds.image_id  // Use the image's id
+        //     }, { transaction });
+        // });
+
         // Optionally, associate only the hint-related images with the hint
         // If you have a way to mark which images are related to the hint, do so here:
         // For example, you could receive an array of image IDs or URLs for hint-specific images.
-        
-        const hintImageInstances = allImageInstances.slice(0, 5); // Assume the first 5 images are part of the hint, for example
   
+
         // Associate images related to the hint (many-to-many relationship)
         await hint.addImages(hintImageInstances, { transaction });
 

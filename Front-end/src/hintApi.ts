@@ -19,11 +19,13 @@ async function handleHintSubmission() {
   }
 
   const selectedIndices = getIndexOfSelectedCards();
-  const cardImageUrls = selectedIndices.map((index) => getImageUrlByIndex(index));
+  const selectedImages = selectedIndices.map((index) => getImageUrlByIndex(index));
   const gameCategory = getGameCatagory();
+  const allCards = [...getCardImageMap().values()];
 
   const hintData = {
-    images: cardImageUrls,          // Array of image URLs corresponding to the selected cards
+    images: allCards,          // Array of image URLs corresponding to the selected cards
+    hintImages: selectedImages,
     hintText: hintText,             // Hint text (from the input field)
     gameCategory: gameCategory,
   };

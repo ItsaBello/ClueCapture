@@ -4,7 +4,7 @@ const { submitHint } = require('../services/hintServices.js'); // Import the ser
 
 // POST route for submitting a hint
 router.post('/api/hints', async (req, res) => {
-  const { images, hintText, gameCategory } = req.body;
+  const { images, hintImages, hintText, gameCategory } = req.body;
 
   // Validate the input
   if (!images || !Array.isArray(images) || images.length === 0) {
@@ -17,7 +17,7 @@ router.post('/api/hints', async (req, res) => {
 
   try {
     // Call the service function to handle the logic
-    const result = await submitHint(images, hintText, gameCategory);
+    const result = await submitHint(images, hintImages, hintText, gameCategory);
 
     if (result.success) {
       return res.status(200).json({ message: result.message });
