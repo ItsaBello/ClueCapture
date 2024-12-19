@@ -354,25 +354,127 @@ button:disabled:hover {
 	}
 }
 
-/* Standaard dropdown styling */
-#numberOfCards {
-	position: absolute;
-	bottom: 75px; /* Distance from the top edge of the screen */
-	right: 120px;
-	width: 100px; /* Breedte van de dropdown */
-	padding: 10px; /* Binnenruimte */
-	font-size: 16px; /* Tekstgrootte */
-	border-radius: 8px; /* Afronde hoeken */
-	background-color: #f9f9f9; /* Achtergrondkleur */
-	color: #333; /* Tekstkleur */
-	cursor: pointer; /* Pointer-cursor bij hover */
+/* Container to position the entire form */
+#formContainer {
+    position: absolute; /* Allows absolute positioning of child elements */
+    width: 100%; /* Full width of the parent container */
+    height: 400px; /* Adjust height to your needs */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center form horizontally */
+    align-items: center; /* Center form vertically */
+    background-color: #f0f0f0; /* Light background for visibility */
+    border: 1px solid #ccc; /* Optional border for the container */
 }
 
-#numberOfcards:focus {
-	outline: none;
-	border-color: #0056b3;
+/* Dropdown styling */
+#numberOfCards {
+    position: absolute;
+	bottom: 80px; /* Distance from the top of the container */
+    left: 85%; /* Distance from right edge of container */
+	background-color: #9ab9c1;
+    color: #03363d;
+	height: 50px;
+    width: 60px;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 8px;
+    color: #333;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
-@media (max-width: 1100px) {
+
+#numberOfCards:focus {
+    outline: none;
+	font-size: 16px;
+    font-weight: bold;
+    color: #03363d;
+	background-color: #03363d; /* Lighter red on hover */
+	border-color: white; /* Slightly lighter border */
+	color: white;
+	transform: scale(1.1); /* Slightly increase size */
+}
+
+/* Submit button styling */
+#submitHintButton {
+    position: absolute;
+	bottom: 78px; /* Distance from the top of the container */
+    left: 90%; 
+    background-color: #9ab9c1;
+    color: #03363d;
+    width: 100px;
+    height: 100px;
+	padding: 10px;
+    font-size: 16px;
+	border-radius: 10px;
+    font-weight: bold;
+    border: 2px solid #03363d;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#submitHintButton:hover {
+	background-color: #03363d; /* Lighter red on hover */
+	border-color: white; /* Slightly lighter border */
+	color: white;
+	transform: scale(1.1); /* Slightly increase size */
+}
+
+/* Input field styling */
+#inputField {
+	width: 300px;
+	padding: 8px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+	background-color: #9ab9c1;
+}
+
+/* Label styling */
+#inputLabel {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+#numberOfCardsLabel {
+	display: block;
+    margin-bottom: 10px;
+    font-size: 10px;
+    font-weight: bold;
+	position: absolute;
+	font-size: 24px;
+	font-family: "owners", sans-serif;
+	color: white;
+	bottom: 80px; /* Distance from the top edge of the screen */
+	right: 257px; /* Distance from the right edge of the screen */
+}
+
+.cloud {
+	position: absolute;
+	top: 25px; /* Adjust to position above the avatar */
+	right: 25%;
+	transform: translateX(-50%); /* Center the cloud horizontally */
+	background-color: #fff;
+	padding: 8px 20px;
+	border-radius: 14px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	max-width: 200px;
+	text-align: center;
+	display: none;
+  }
+  
+  /* Text inside the cloud */
+  .cloud-text {
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+  }@media (max-width: 1100px) {
 	.image-container-left {
 		display: none;
 	}
