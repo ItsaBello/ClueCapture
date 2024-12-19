@@ -49,3 +49,5 @@ Thumbs.db
 *.wmv
 
 ERD-ClueCapture.drawio
+
+Back-end/database.js
