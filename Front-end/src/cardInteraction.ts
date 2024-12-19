@@ -1,5 +1,3 @@
-import { getCardImageMap, getImageUrlByIndex } from './imageLoader.js';
-
 const clickedCards: string[] = []; // Array to track clicked cards
 const indexOfClickedCards: number[] = [];
 
@@ -37,9 +35,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	cards.forEach((card) => {
 		card.addEventListener("click", () => {
-
 			const cardName = card.getAttribute("data-name");
-			const selectedValue = parseInt(numberOfcards.value, 5);
+			const selectedValue = parseInt(numberOfcards.value, 10);
 
 			// Check if the card is already selected
 			if (cardName && clickedCards.includes(cardName)) {

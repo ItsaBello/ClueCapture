@@ -28,7 +28,7 @@ document.querySelectorAll(".card .info-button").forEach((button) => {
 	});
 });
 
-document.querySelectorAll(".card").forEach((card) => {
+document.querySelectorAll(".card .flipped").forEach((card) => {
 	card.addEventListener("click", () => {
 		// Flip back the card if it is currently flipped
 		if (card.classList.contains("flipped")) {
