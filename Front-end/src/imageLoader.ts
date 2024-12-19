@@ -114,6 +114,7 @@ async function fetchGameCards() {
 	} finally {
 		resetButton.disabled = false;
 		resetButton.classList.remove("loading");
+		cloud.style.display = 'block';	
 	}
 }
 
@@ -121,4 +122,4 @@ async function fetchGameCards() {
 resetButton.addEventListener("click", fetchGameCards);
 
 // // Initial board generation
-fetchGameCards();
+// fetchGameCards();
