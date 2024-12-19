@@ -61,7 +61,7 @@ async function fetchGameCards() {
 	resetButton.disabled = true;
 	resetButton.classList.add("loading");
 	const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=${queryObject}`; // Filter en Topic
-	const cards = gameBoard.querySelectorAll(".card-plaatje");
+	const cards = gameBoard.querySelectorAll(".card-image");
 	cards.forEach((card) => (card.innerHTML = "")); // Clear board
 
 	try {
@@ -119,7 +119,7 @@ async function fetchGameCards() {
 		});
 		resetButton.disabled = false;
 		resetButton.classList.remove("loading");
-		cloud.style.display = 'block';
+		cloud.style.display = "block";
 	}
 }
 
