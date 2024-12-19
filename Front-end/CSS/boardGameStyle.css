@@ -443,20 +443,37 @@ button:disabled:hover {
 
 #numberOfCardsLabel {
 	display: block;
-	margin-bottom: 10px;
-	font-size: 10px;
-	font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 10px;
+    font-weight: bold;
 	position: absolute;
-	bottom: 75px; /* Distance from the top edge of the screen */
-	right: 120px;
-	width: 100px; /* Breedte van de dropdown */
-	padding: 10px; /* Binnenruimte */
-	font-size: 16px; /* Tekstgrootte */
-	border-radius: 8px; /* Afronde hoeken */
-	background-color: #f9f9f9; /* Achtergrondkleur */
-	color: #333; /* Tekstkleur */
-	cursor: pointer; /* Pointer-cursor bij hover */
+	font-size: 24px;
+	font-family: "owners", sans-serif;
+	color: white;
+	bottom: 80px; /* Distance from the top edge of the screen */
+	right: 257px; /* Distance from the right edge of the screen */
 }
+
+.cloud {
+	position: absolute;
+	top: 25px; /* Adjust to position above the avatar */
+	right: 25%;
+	transform: translateX(-50%); /* Center the cloud horizontally */
+	background-color: #fff;
+	padding: 8px 20px;
+	border-radius: 14px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	max-width: 200px;
+	text-align: center;
+	display: none;
+  }
+  
+  /* Text inside the cloud */
+  .cloud-text {
+	font-size: 16px;
+	font-weight: bold;
+	color: #333;
+  }
 
 #numberOfcards:focus {
 	outline: none;
