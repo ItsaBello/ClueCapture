@@ -16,3 +16,79 @@ h1 {
 	font-style: medium;
 	font-size: 60px;
 }
+#nameLabel{
+	font-size: 24px;
+	color: white;
+	bottom: 20px; /* Distance from the top edge of the screen */
+	right: 330px; /* Distance from the right edge of the screen */
+	margin-bottom: 10px; /* Add space between label and input field */
+	display: block;
+	margin-bottom: 7px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #ffffff;
+}
+#name{
+	width: 300px;
+	padding: 8px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background-color: #9ab9c1;
+}
+
+#apiSelectionLabel{
+	font-size: 24px;
+	color: white;
+	bottom: 20px; /* Distance from the top edge of the screen */
+	right: 330px; /* Distance from the right edge of the screen */
+	margin-bottom: 10px; /* Add space between label and input field */
+	display: block;
+	margin-bottom: 7px;
+	font-size: 24px;
+	font-weight: bold;
+	color: #ffffff;
+}
+
+#apiSelection {
+	width: 300px;
+	padding: 8px;
+	font-size: 16px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	background-color: #9ab9c1;
+}
+
+#startButton {
+	background-color: #f3f5f5;
+	color: #03363d;
+	width: 250px;
+	height: 50px;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 10px;
+	margin-left: 10px; 
+	margin-top: 25px;
+	font-weight: bold;
+	border: 2px solid #03363d;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+}
+
+#startButton:hover {
+	background-color: #03363d; /* Lighter red on hover */
+	border-color: white; /* Slightly lighter border */
+	color: white;
+	transform: scale(1.1); /* Slightly increase size */
+	align-items: center;
+}
+
+.startScreenContainer{
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+}
