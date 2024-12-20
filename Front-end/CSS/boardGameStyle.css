@@ -5,6 +5,8 @@
 }
 
 body {
+	max-width: 100%;
+	max-height: 100%;
 	position: relative;
 	display: flex;
 	flex-direction: column;
@@ -443,9 +445,9 @@ button:disabled:hover {
 
 #numberOfCardsLabel {
 	display: block;
-    margin-bottom: 10px;
-    font-size: 10px;
-    font-weight: bold;
+	margin-bottom: 10px;
+	font-size: 10px;
+	font-weight: bold;
 	position: absolute;
 	font-size: 24px;
 	font-family: "owners", sans-serif;
@@ -466,14 +468,14 @@ button:disabled:hover {
 	max-width: 200px;
 	text-align: center;
 	display: none;
-  }
-  
-  /* Text inside the cloud */
-  .cloud-text {
+}
+
+/* Text inside the cloud */
+.cloud-text {
 	font-size: 16px;
 	font-weight: bold;
 	color: #333;
-  }
+}
 
 #numberOfcards:focus {
 	outline: none;

@@ -1,20 +1,27 @@
+import {Card} from "./classes/card.js";
+import {fetchGameCards} from "./imageLoader.js";
+
+console.log("Card interaction initialized.");
 const clickedCards: string[] = []; // Array to track clicked cards
 const indexOfClickedCards: number[] = [];
 
 export function getIndexOfSelectedCards(): number[] {
-	if(indexOfClickedCards.length === 0) {
+	if (indexOfClickedCards.length === 0) {
 		return [];
-	};
+	}
 	return [...indexOfClickedCards]; // Returns a shallow copy of the clickedCards array
 }
 
+console.log("Card interaction initialized.");
 document.addEventListener("DOMContentLoaded", () => {
-	const cards = document.querySelectorAll<HTMLDivElement>(".card");
+	console.log("DOM loaded.");
+	// const cards = document.querySelectorAll<HTMLDivElement>(".card");
+	const gameBoard = document.getElementById("gameBoard") as HTMLElement;
 	let score = 0; // Initialize score
-	const scoreCounterElement = document.getElementById('scoreCounter');
-	const numberOfcards = document.getElementById('numberOfCards')as HTMLSelectElement;
-	const resetButton = document.getElementById('resetButton')as HTMLButtonElement;
-	
+	const scoreCounterElement = document.getElementById("scoreCounter");
+	const numberOfcards = document.getElementById("numberOfCards") as HTMLSelectElement;
+	const resetButton = document.getElementById("resetButton") as HTMLButtonElement;
+
 	// Function to update score display
 	function updateScore(newScore: number) {
 		score = newScore;
@@ -22,18 +29,23 @@ document.addEventListener("DOMContentLoaded", () => {
 			scoreCounterElement.textContent = `Score: ${score}`;
 		}
 	}
-
+	console.log("Card interaction initialized.");
 	function getSelectedCards(): string[] {
-		if(clickedCards.length === 0) {
+		if (clickedCards.length === 0) {
 			return [];
-		};
+		}
 		return [...clickedCards]; // Returns a shallow copy of the clickedCards array
 	}
+	function generateCards(count: number) {
+		console.log("Generating cards...");
+		for (let i = 0; i < count; i++) {
+			const cardElement = Card.createCardElement(i);
+			gameBoard.appendChild(cardElement);
+			handleCardClick(cardElement);
+		}
+	}
 
-	// Set initial score
-	updateScore(score);
-
-	cards.forEach((card) => {
+	function handleCardClick(card: HTMLElement) {
 		card.addEventListener("click", () => {
 			const cardName = card.getAttribute("data-name");
 			const selectedValue = parseInt(numberOfcards.value, 10);
@@ -65,22 +77,28 @@ document.addEventListener("DOMContentLoaded", () => {
 				updateScore(score + 1);
 			}
 		});
-	});
+	}
+	console.log("Game board initialized.");
+	// Set initial score
+	updateScore(score);
+
+	generateCards(16);
+	fetchGameCards();
 
 	// Reset functionality for when player interacts with resetButton
 	resetButton.addEventListener("click", () => {
 		// Reset score
 		updateScore(0);
-
 		//Clear clicked cards array
 		clickedCards.length = 0;
 		indexOfClickedCards.length = 0;
-
 		// Remove clicked class from all cards
+		const cards = document.querySelectorAll(".card");
 		cards.forEach((card) => card.classList.remove("clicked"));
-
+		fetchGameCards();
 		console.log("Game reset. Score is now 0. Clicked cards are:" + getSelectedCards());
-	})
+	});
+
 	const exampleButton = document.getElementById("exampleButton") as HTMLButtonElement;
 	exampleButton?.addEventListener("click", () => {
 		const selectedCards = getSelectedCards();
