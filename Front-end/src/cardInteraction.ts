@@ -4,11 +4,12 @@ import {fetchGameCards} from "./imageLoader.js";
 console.log("Card interaction initialized.");
 const clickedCards: string[] = []; // Array to track clicked cards
 const indexOfClickedCards: number[] = [];
+const numberOfcards = document.getElementById('numberOfCards')as HTMLSelectElement;
 
-export function getIndexOfSelectedCards(): number[] {
-	if (indexOfClickedCards.length === 0) {
-		return [];
-	}
+export function getIndexOfSelectedCards(): number[] | null {
+	if(parseInt(numberOfcards.value) != indexOfClickedCards.length) {
+		return null;
+	};
 	return [...indexOfClickedCards]; // Returns a shallow copy of the clickedCards array
 }
 
@@ -18,10 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	// const cards = document.querySelectorAll<HTMLDivElement>(".card");
 	const gameBoard = document.getElementById("gameBoard") as HTMLElement;
 	let score = 0; // Initialize score
-	const scoreCounterElement = document.getElementById("scoreCounter");
-	const numberOfcards = document.getElementById("numberOfCards") as HTMLSelectElement;
-	const resetButton = document.getElementById("resetButton") as HTMLButtonElement;
-
+	const scoreCounterElement = document.getElementById('scoreCounter');
+	const resetButton = document.getElementById('resetButton')as HTMLButtonElement;
+	
 	// Function to update score display
 	function updateScore(newScore: number) {
 		score = newScore;
