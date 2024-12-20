@@ -19,6 +19,10 @@ async function handleHintSubmission() {
   }
 
   const selectedIndices = getIndexOfSelectedCards();
+  if(selectedIndices === null){
+    alert("The hint should contain as many selected images as chosen.");
+    throw new Error("The hint should contain as many selected image as chosen.");
+  }
   const selectedImages = selectedIndices.map((index) => getImageUrlByIndex(index));
   const gameCategory = getGameCatagory();
   const allCards = [...getCardImageMap().values()];
