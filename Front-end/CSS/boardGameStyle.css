@@ -181,6 +181,25 @@ h1 {
 	right: 20px;
 }
 
+.cloud {
+	position: absolute;
+	top: calc(20px + 200px + 10px); /* Adjust based on the .image-container's top and height */
+	right: 20px; /* Align with .image-container-left */
+	width: 300px; /* Match the width of .image-container */
+	height: auto;
+	background-color: #fff; /* Example background color */
+	border: 1px solid #ccc; /* Example border */
+	border-radius: 8px; /* Optional rounded corners */
+	padding: 10px; /* Optional padding */
+}
+
+/* Text inside the cloud */
+.cloud-text {
+	font-size: 16px;
+	font-weight: bold;
+	color: #03363d;
+}
+
 .score-caption-left {
 	position: relative;
 	top: -910px; /* Adjust as needed to position under playerName */
@@ -387,7 +406,7 @@ button:disabled:hover {
 	background-color: #9ab9c1;
 	color: #03363d;
 	height: 35px;
-	width: 120px;
+	width: 300px;
 	padding: 10px;
 	font-size: 24px;
 	border-radius: 8px;
@@ -399,8 +418,7 @@ button:disabled:hover {
 
 #numberOfCards:focus {
 	outline: none;
-	font-size: 16px;
-	font-weight: bold;
+	font-size: 24px;
 	color: #03363d;
 	background-color: #03363d; /* Lighter red on hover */
 	border-color: white; /* Slightly lighter border */
@@ -419,27 +437,6 @@ button:disabled:hover {
 	color: white;
 	bottom: 73px; /* Distance from the top edge of the screen */
 	right: 450px; /* Distance from the right edge of the screen */
-}
-
-.cloud {
-	position: absolute;
-	top: 25px; /* Adjust to position above the avatar */
-	right: 25%;
-	transform: translateX(-50%); /* Center the cloud horizontally */
-	background-color: #fff;
-	padding: 8px 20px;
-	border-radius: 14px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	max-width: 200px;
-	text-align: center;
-	display: none;
-}
-
-/* Text inside the cloud */
-.cloud-text {
-	font-size: 16px;
-	font-weight: bold;
-	color: #03363d;
 }
 
 #numberOfCards:focus {
