@@ -195,19 +195,20 @@ h1 {
 #resetButton,
 #rulesButton,
 #inputField,
-#inputLabel {
+#inputLabel,
+#submitHintButton {
 	position: absolute; /* Fix them to the viewport */
 	z-index: 2; /* Ensure they stay above the game board */
 }
 
 #resetButton,
-#rulesButton {
+#rulesButton,
+#submitHintButton {
 	background-color: #9ab9c1; /* Bright red background */
 	color: #03363d; /* White text */
 	width: 100px;
 	height: 100px;
 	bottom: 20px; /* Distance from the top edge of the screen */
-	left: 20px; /* Distance from the right edge of the screen */
 	font-size: 18px; /* Slightly larger font */
 	font-weight: bold; /* Make the text bold */
 	border: 2px solid #03363d; /* Darker red border */
@@ -219,17 +220,29 @@ h1 {
 	transition: all 0.3s ease; /* Smooth transition effect */
 }
 
-#rulesButton {
-	left: 140px; /* Distance from the right edge of the screen */
+#resetButton {
+	left: 20px;
 }
 
-/* Hover effect */
+#rulesButton {
+	left: 140px;
+}
+
+#submitHintButton {
+	right: 20px;
+}
+
 #resetButton:hover,
-#rulesButton:hover {
+#rulesButton:hover,
+#submitHintButton:hover {
 	background-color: #03363d; /* Lighter red on hover */
 	border-color: white; /* Slightly lighter border */
 	color: white;
 	transform: scale(1.1); /* Slightly increase size */
+}
+
+#hintFromContainer {
+	position: relative;
 }
 
 #inputField,
@@ -241,8 +254,8 @@ h1 {
 #inputField {
 	width: 300px; /* Set the width of the text field */
 	height: 40px; /* Set the height */
-	bottom: 25px; /* Distance from the top edge of the screen */
-	right: 25px; /* Distance from the right edge of the screen */
+	bottom: 20px; /* Distance from the top edge of the screen */
+	right: 140px; /* Distance from the right edge of the screen */
 	border: 2px solid #03363d; /* Border color */
 	border-radius: 8px; /* Rounded corners */
 	padding: 0 10px; /* Padding inside the text field */
@@ -254,9 +267,10 @@ h1 {
 
 #inputLabel {
 	font-size: 24px;
+	font-weight: bold;
 	color: white;
-	bottom: 20px; /* Distance from the top edge of the screen */
-	right: 330px; /* Distance from the right edge of the screen */
+	bottom: 15px; /* Distance from the top edge of the screen */
+	right: 450px; /* Distance from the right edge of the screen */
 	margin-bottom: 10px; /* Add space between label and input field */
 }
 
@@ -369,13 +383,13 @@ button:disabled:hover {
 #numberOfCards {
 	position: absolute;
 	bottom: 80px; /* Distance from the top of the container */
-	left: 85%; /* Distance from right edge of container */
+	right: 140px; /* Distance from right edge of container */
 	background-color: #9ab9c1;
 	color: #03363d;
-	height: 50px;
-	width: 60px;
+	height: 35px;
+	width: 120px;
 	padding: 10px;
-	font-size: 16px;
+	font-size: 24px;
 	border-radius: 8px;
 	color: #333;
 	border: 1px solid #ccc;
@@ -394,64 +408,17 @@ button:disabled:hover {
 	transform: scale(1.1); /* Slightly increase size */
 }
 
-/* Submit button styling */
-#submitHintButton {
-	position: absolute;
-	bottom: 78px; /* Distance from the top of the container */
-	left: 90%;
-	background-color: #9ab9c1;
-	color: #03363d;
-	width: 100px;
-	height: 100px;
-	padding: 10px;
-	font-size: 16px;
-	border-radius: 10px;
-	font-weight: bold;
-	border: 2px solid #03363d;
-	cursor: pointer;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	transition: all 0.3s ease;
-}
-
-#submitHintButton:hover {
-	background-color: #03363d; /* Lighter red on hover */
-	border-color: white; /* Slightly lighter border */
-	color: white;
-	transform: scale(1.1); /* Slightly increase size */
-}
-
-/* Input field styling */
-#inputField {
-	width: 300px;
-	padding: 8px;
-	font-size: 16px;
-	border-radius: 5px;
-	border: 1px solid #ccc;
-	background-color: #9ab9c1;
-}
-
-/* Label styling */
-#inputLabel {
-	display: block;
-	margin-bottom: 7px;
-	font-size: 24px;
-	font-weight: bold;
-	color: #ffffff;
-}
-
 #numberOfCardsLabel {
 	display: block;
-    margin-bottom: 10px;
-    font-size: 10px;
-    font-weight: bold;
+	margin-bottom: 10px;
+	font-size: 10px;
+	font-weight: bold;
 	position: absolute;
 	font-size: 24px;
 	font-family: "owners", sans-serif;
 	color: white;
-	bottom: 80px; /* Distance from the top edge of the screen */
-	right: 257px; /* Distance from the right edge of the screen */
+	bottom: 73px; /* Distance from the top edge of the screen */
+	right: 450px; /* Distance from the right edge of the screen */
 }
 
 .cloud {
@@ -466,18 +433,18 @@ button:disabled:hover {
 	max-width: 200px;
 	text-align: center;
 	display: none;
-  }
-  
-  /* Text inside the cloud */
-  .cloud-text {
+}
+
+/* Text inside the cloud */
+.cloud-text {
 	font-size: 16px;
 	font-weight: bold;
-	color: #333;
-  }
+	color: #03363d;
+}
 
-#numberOfcards:focus {
+#numberOfCards:focus {
 	outline: none;
-	border-color: #0056b3;
+	border-color: #03363d;
 }
 @media (max-width: 1100px) {
 	.image-container-left {
