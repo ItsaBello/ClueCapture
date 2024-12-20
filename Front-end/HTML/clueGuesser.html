@@ -19,7 +19,7 @@
 			<img src="../Images/StickMan.png" alt="PLAYER ONE" />
 		</div>
 		<div id="cloud" class="cloud">
-			<span class="cloud-text">Submit a hint!</span>
+			<span class="cloud-text">Choose the cards connected to the hint!</span>
 		</div>
 		<p id="playerName" class="image-caption-left"></p>
 		<p id="scoreCounter" class="score-caption-left">Score: 0</p>
@@ -42,18 +42,14 @@
 			}
 		</script>
 
-		<div id="hintFormContainer">
-			<form id="hintForm">
-				<label id="inputLabel">Enter Clue:</label>
-				<label id="numberOfCardsLabel"># of Cards:</label>
-				<input id="inputField" type="text" />
-				<button id="submitHintButton" type="submit">Submit Hint</button>
-				<select name="numberOfCards" id="numberOfCards">
-					<option value="2">2 cards</option>
-					<option value="3">3 cards</option>
-					<option value="4">4 cards</option>
-				</select>
-			</form>
+		<div id="showHintContainer">
+			<label id="hintLabel">Hint:</label>
+			<button id="submitCardsButton" type="submit">Submit Cards</button>
+			<button id="nextGameButton">Start<br />Next<br />Game</button>
+			<button id="getHintButton">
+				Give<br />Me My <br />
+				Hint!
+			</button>
 		</div>
 
 		<div id="rulesModal" class="modal">
@@ -75,5 +71,6 @@
 		<script type="module" src="../dist/cardInfoTurn.js"></script>
 		<script type="module" src="../dist/hintApi.js"></script>
 		<script type="module" src="../dist/classes/card.js"></script>
+		<script type="module" src="../dist/imageLoaderFromDB.js"></script>
 	</body>
 </html>

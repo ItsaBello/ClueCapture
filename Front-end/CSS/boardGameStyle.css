@@ -217,14 +217,20 @@ h1 {
 #rulesButton,
 #inputField,
 #inputLabel,
-#submitHintButton {
+#submitHintButton,
+#submitCardsButton,
+#nextGameButton,
+#getHintButton {
 	position: absolute; /* Fix them to the viewport */
 	z-index: 2; /* Ensure they stay above the game board */
 }
 
 #resetButton,
 #rulesButton,
-#submitHintButton {
+#submitHintButton,
+#submitCardsButton,
+#nextGameButton,
+#getHintButton {
 	background-color: #9ab9c1; /* Bright red background */
 	color: #03363d; /* White text */
 	width: 100px;
@@ -253,21 +259,33 @@ h1 {
 	right: 20px;
 }
 
+#submitCardsButton {
+	right: 140px;
+}
+
+#nextGameButton {
+	right: 20px;
+}
+
+#getHintButton {
+	right: 750px;
+}
+
 #resetButton:hover,
 #rulesButton:hover,
-#submitHintButton:hover {
+#submitHintButton:hover,
+#submitCardsButton:hover,
+#nextGameButton:hover,
+#getHintButton:hover {
 	background-color: #03363d; /* Lighter red on hover */
 	border-color: white; /* Slightly lighter border */
 	color: white;
 	transform: scale(1.1); /* Slightly increase size */
 }
 
-#hintFromContainer {
-	position: relative;
-}
-
 #inputField,
-#inputLabel {
+#inputLabel,
+#hintLabel {
 	position: absolute;
 	font-family: "owners", sans-serif;
 }
@@ -286,13 +304,21 @@ h1 {
 	transition: all 0.3s ease; /* Smooth transition effect */
 }
 
-#inputLabel {
+#inputLabel,
+#hintLabel {
 	font-size: 24px;
 	font-weight: bold;
 	color: white;
 	bottom: 15px; /* Distance from the top edge of the screen */
-	right: 450px; /* Distance from the right edge of the screen */
 	margin-bottom: 10px; /* Add space between label and input field */
+}
+
+#inputLabel {
+	right: 450px;
+}
+
+#hintLabel {
+	right: 450px; /* Distance from the right edge of the screen */
 }
 
 .modal {
@@ -360,14 +386,16 @@ button:disabled:hover {
 	cursor: default;
 }
 
-#resetButton.loading {
+#resetButton.loading,
+#getHintButton.loading {
 	background-color: #b9d5e9; /* Lichtere kleur tijdens het laden */
 	color: #000000;
 	cursor: not-allowed; /* Knop is niet klikbaar */
 	pointer-events: none;
 }
 
-#resetButton.loading::after {
+#resetButton.loading::after,
+#getHintButton.loading::after {
 	content: "";
 	display: inline-block;
 	width: 20px;

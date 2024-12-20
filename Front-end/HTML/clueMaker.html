@@ -1,0 +1,80 @@
+<html>
+	<head>
+		<title>Clue Capture Game</title>
+		<link rel="stylesheet" href="../CSS/boardGameStyle.css" />
+		<link rel="stylesheet" href="https://use.typekit.net/jfe7dsa.css" />
+	</head>
+
+	<body>
+		<h1>Clue Capture</h1>
+		<div class="game-board" id="gameBoard"></div>
+		<button id="resetButton">Reset Game</button>
+		<button id="rulesButton">Rules</button>
+
+		<div class="image-container-right">
+			<img src="../Images/Clue Captain blue artboard.png" alt="CLUE CAPTAIN" />
+		</div>
+		<p class="image-caption-right">Clue Captain</p>
+		<div class="image-container-left">
+			<img src="../Images/StickMan.png" alt="PLAYER ONE" />
+		</div>
+		<div id="cloud" class="cloud">
+			<span class="cloud-text">Submit a hint!</span>
+		</div>
+		<p id="playerName" class="image-caption-left"></p>
+		<p id="scoreCounter" class="score-caption-left">Score: 0</p>
+		<script>
+			const name = localStorage.getItem("playerName") || "Player one";
+			const playerNameElement = document.getElementById("playerName");
+			if (playerNameElement) {
+				playerNameElement.textContent = name;
+			}
+			//Difficult to put in TS so for now in HTML
+
+			// Initialize score
+			let score = 0;
+			const scoreCounterElement = document.getElementById("scoreCounter");
+			function updateScore(newScore) {
+				score = newScore;
+				if (scoreCounterElement) {
+					scoreCounterElement.textContent = `Score: ${score}`;
+				}
+			}
+		</script>
+
+		<div id="hintFormContainer">
+			<form id="hintForm">
+				<label id="inputLabel">Enter Clue:</label>
+				<label id="numberOfCardsLabel"># of Cards:</label>
+				<input id="inputField" type="text" />
+				<button id="submitHintButton" type="submit">Submit Hint</button>
+				<!-- <button id="nextGameButton">Start<br />Next<br />Game</button> -->
+				<select name="numberOfCards" id="numberOfCards">
+					<option value="2">2 cards</option>
+					<option value="3">3 cards</option>
+					<option value="4">4 cards</option>
+				</select>
+			</form>
+		</div>
+
+		<div id="rulesModal" class="modal">
+			<div class="modal-content">
+				<span class="close">&times;</span>
+				<h2>Game Rules</h2>
+				<p>Here are the rules of Clue Capture!</p>
+				<ul>
+					<li>Rule 1: Lorem Ipsum</li>
+					<li>Rule 2: Lorem Ipsum</li>
+					<li>Rule 3: Lorem Ipsum</li>
+				</ul>
+			</div>
+		</div>
+
+		<script type="module" src="../dist/imageLoader.js"></script>
+		<script type="module" src="../dist/rulesButton.js"></script>
+		<script type="module" src="../dist/cardInteraction.js"></script>
+		<script type="module" src="../dist/cardInfoTurn.js"></script>
+		<script type="module" src="../dist/hintApi.js"></script>
+		<script type="module" src="../dist/classes/card.js"></script>
+	</body>
+</html>

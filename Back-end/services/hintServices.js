@@ -1,70 +1,74 @@
-const sequelize = require('../database.js');
-const { Game, Hint, Image, ImageHint } = require('../models');
+const sequelize = require("../database.js");
+const { Game, Hint, Image, ImageHint } = require("../models");
 
 async function submitHint(images, image_hint, hintText, gameCategory) {
-    let transaction;
-  
-    try {
-        // Start a transaction
-        transaction = await sequelize.transaction();
+	let transaction;
 
-        // Create a new game with an auto-incremented game_id
-        const game = await Game.create(
-            { category: gameCategory },  // gameCategory is passed as an argument
-            { transaction }
-        );
-  
-        // Create the hint entry and associate it with the newly created game
-        const hint = await Hint.create(
-            { 
-                hint_text: hintText,
-                game_id: game.game_id,  // Link the hint to the new game
-            },
-            { transaction }
-        );
+	try {
+		// Start a transaction
+		transaction = await sequelize.transaction();
 
-        // Insert all images into the Images table first (even those not part of the hint)
-        const allImageInstances = await Promise.all(
-            images.map((imageUrl) => Image.create({ image_url: imageUrl, game_id: game.game_id }, { transaction }))
-        );
+		// Create a new game with an auto-incremented game_id
+		const game = await Game.create(
+			{ category: gameCategory }, // gameCategory is passed as an argument
+			{ transaction }
+		);
 
-        // Prepare to associate the hint with specific images (from the image_hint array)
-        const hintImageInstances = [];
+		// Create the hint entry and associate it with the newly created game
+		const hint = await Hint.create(
+			{
+				hint_text: hintText,
+				game_id: game.game_id, // Link the hint to the new game
+			},
+			{ transaction }
+		);
 
-        // Find the image instances for the URLs in image_hint
-        await Promise.all(
-            image_hint.map(async (url) => {
-                // Find the image instance from the allImageInstances array
-                const imageInstance = allImageInstances.find(img => img.image_url === url);
-                if (imageInstance) {
-                    hintImageInstances.push(imageInstance);  // Collect image instances that will be associated with the hint
+		// Insert all images into the Images table first (even those not part of the hint)
+		const allImageInstances = await Promise.all(
+			images.map((imageUrl) =>
+				Image.create({ image_url: imageUrl, game_id: game.game_id }, { transaction })
+			)
+		);
 
-                    // Create the image_hint join table entry
-                    await image_hint.create({
-                        hint_id: hint.hint_id,  // Use the hint's id
-                        image_id: imageInstance.image_id  // Use the image's id
-                    }, { transaction });
-                }
-            })
-        );
+		// Prepare to associate the hint with specific images (from the image_hint array)
+		const hintImageInstances = [];
 
-        // Optionally, associate only the hint-related images with the hint
-        // If you have a way to mark which images are related to the hint, do so here:
-        // For example, you could receive an array of image IDs or URLs for hint-specific images.
-  
+		// Find the image instances for the URLs in image_hint
+		await Promise.all(
+			image_hint.map(async (url) => {
+				// Find the image instance from the allImageInstances array
+				const imageInstance = allImageInstances.find((img) => img.image_url === url);
+				if (imageInstance) {
+					hintImageInstances.push(imageInstance); // Collect image instances that will be associated with the hint
 
-        // Associate images related to the hint (many-to-many relationship)
-        await hint.addImages(hintImageInstances, { transaction });
+					// Create the image_hint join table entry
+					await ImageHint.create(
+						{
+							hint_id: hint.hint_id, // Use the hint's id
+							image_id: imageInstance.image_id, // Use the image's id
+						},
+						{ transaction }
+					);
+				}
+			})
+		);
 
-        // Commit the transaction
-        await transaction.commit();
-  
-        return { success: true, message: 'Hint and images submitted successfully!' };
-    } catch (error) {
-        if (transaction) await transaction.rollback(); // Rollback if any error occurs
-        console.error('Error submitting hint and images:', error);
-        return { success: false, message: 'Error submitting hint and images' };
-    }
+		// Optionally, associate only the hint-related images with the hint
+		// If you have a way to mark which images are related to the hint, do so here:
+		// For example, you could receive an array of image IDs or URLs for hint-specific images.
+
+		// Associate images related to the hint (many-to-many relationship)
+		await hint.addImages(hintImageInstances, { transaction });
+
+		// Commit the transaction
+		await transaction.commit();
+
+		return { success: true, message: "Hint and images submitted successfully!" };
+	} catch (error) {
+		if (transaction) await transaction.rollback(); // Rollback if any error occurs
+		console.error("Error submitting hint and images:", error);
+		return { success: false, message: "Error submitting hint and images" };
+	}
 }
 
 module.exports = { submitHint };
