@@ -1,4 +1,4 @@
-import { getCardImageMap, getGameCatagory, getImageUrlByIndex } from './imageLoader.js';
+import { getCardImageMap, getGameCatagory, getImageUrlByIndex } from './imageLoaderFromApi.js';
 import { getIndexOfSelectedCards } from './cardInteraction.js';
 
 // Function to handle hint submission
@@ -26,6 +26,10 @@ async function handleHintSubmission() {
   const selectedImages = selectedIndices.map((index) => getImageUrlByIndex(index));
   const gameCategory = getGameCatagory();
   const allCards = [...getCardImageMap().values()];
+
+  if(allCards.length != 16) {
+    throw new Error("Hint is not saved because there are not 16 images loaded.");
+  }
 
   const hintData = {
     images: allCards,          // Array of image URLs corresponding to the selected cards

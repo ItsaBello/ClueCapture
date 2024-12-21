@@ -1,81 +1,60 @@
 const gameBoard = document.getElementById("gameBoard") as HTMLElement;
 const getHintButton = document.getElementById("getHintButton") as HTMLButtonElement;
-const cardImageMap = new Map<number, string>();
 const cloud = document.getElementById("cloud") as HTMLSpanElement;
+const hintLabel = document.getElementById("hintLabel") as HTMLLabelElement;
 
 export async function fetchGameCardsFromDB() {
-	getHintButton.disabled = true;
-	getHintButton.classList.add("loading");
-	const cards = gameBoard.querySelectorAll(".card-image");
-	cards.forEach((card) => (card.innerHTML = "")); // Clear board
+  getHintButton.disabled = true;
+  getHintButton.classList.add("loading");
+  const cards = gameBoard.querySelectorAll(".card-image");
+  cards.forEach((card) => (card.innerHTML = "")); // Clear the game board
 
-	try {
-		const response = await fetch("http://localhost:3000/api/getHints", {
-			method: "GET",
-		});
+  try {
+    // Fetch hint and images
+    const response = await fetch("http://localhost:3000/api/getHint", {
+      method: "GET",
+    });
 
-		if (!response.ok) {
-			throw new Error("Failed to load hint.");
-		}
+    if (!response.ok) {
+      throw new Error("Failed to load hint.");
+    }
 
-		const data = await response.json();
-		console.log("Hint loaded successfully:", data);
-		cloud.style.display = "none";
-	} catch (error) {
-		console.error("Error loading the hint.", error);
-	}
+    const { data, message } = await response.json();
+    console.log(message); // "Hint loaded successfully"
+
+    // Extract hint and images from the response
+    const hint = data.Hints[0]?.hint_text || "No hint available";
+    const images = data.Images || [];
+	const gameId = data.game_id || "No game id available";
+
+	console.log(gameId, hint, images); // Print de loaded game data naar browser console
+
+    // Display the hint
+    hintLabel.textContent = "Hint: " + hint;
+    cloud.style.display = "block"; // Show the hint UI element
+
+    // Check if images are available
+    if (images.length !== 16) {
+      throw new Error("Invalid number of images received.");
+    }
+
+    // Render images on the game board
+    images.forEach(({ image_id, image_url }: { image_id: number, image_url: string }, index: number) => {
+      const card = cards[index];
+      const img = new Image();
+      img.src = image_url;
+      img.alt = `Image ${image_id}`;
+      card.appendChild(img);
+    });
+
+  } catch (error) {
+    console.error("Error loading the hint and images:", error);
+    alert("Failed to load the game. Please try again.");
+  } finally {
+    getHintButton.disabled = false;
+    getHintButton.classList.remove("loading");
+  }
 }
 
-// Fetch object details
-// 		const objectDetailsPromises = shuffledObjectIDs.map(async (id: any) => {
-// 			const response = await fetch(`${objectBaseUrl}${id}`);
-// 			return response.ok ? response.json() : null;
-// 		});
-
-// 		const objectDetails = await Promise.all(objectDetailsPromises);
-
-// 		// Filter objects that have a small image and pick 16 randomly
-// 		const validObjects = objectDetails.filter((data) => data && data.primaryImageSmall);
-// 		const randomizedObjects = validObjects.sort(() => Math.random() - 0.5).slice(0, 16);
-
-// 		// Preload all images
-// 		type PreloadedImage = {
-// 			img: HTMLImageElement;
-// 			object: { primaryImageSmall: string; title?: string };
-// 		};
-// 		const preloadedImages: PreloadedImage[] = await Promise.all(
-// 			randomizedObjects.map(
-// 				(object) =>
-// 					new Promise<PreloadedImage>((resolve, reject) => {
-// 						const img = new Image();
-// 						img.src = object.primaryImageSmall;
-// 						img.alt = object.title || "Artwork";
-
-// 						img.onload = () => resolve({ img, object });
-// 						img.onerror = () =>
-// 							reject(new Error(`Failed to load image: ${object.primaryImageSmall}`));
-// 					})
-// 			)
-// 		);
-
-// 		// Append all preloaded images to their respective cards
-// 		preloadedImages.forEach(({ img, object }, index) => {
-// 			const card = cards[index];
-// 			card.appendChild(img);
-
-// 			cardImageMap.set(index, object.primaryImageSmall);
-// 		});
-// 	} catch (error) {
-// 		console.error("Error fetching game cards:", error);
-// 	} finally {
-// 		cardImageMap.forEach((url, index) => {
-// 			console.log(`Card Index: ${index}, Image URL: ${url}`);
-// 		});
-// 		getHintButton.disabled = false;
-// 		getHintButton.classList.remove("loading");
-// 		cloud.style.display = "block";
-// 	}
-// }
-
-// Reset game board
+// Add event listener to load the game when the button is clicked
 getHintButton.addEventListener("click", fetchGameCardsFromDB);

@@ -1,5 +1,5 @@
 import {Card} from "./classes/card.js";
-import {fetchGameCards} from "./imageLoader.js";
+import {fetchGameCards} from "./imageLoaderFromApi.js";
 
 console.log("Card interaction initialized.");
 const clickedCards: string[] = []; // Array to track clicked cards
@@ -83,7 +83,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	updateScore(score);
 
 	generateCards(16);
-	fetchGameCards();
 
 	// Reset functionality for when player interacts with resetButton
 	resetButton.addEventListener("click", () => {
@@ -95,7 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		// Remove clicked class from all cards
 		const cards = document.querySelectorAll(".card");
 		cards.forEach((card) => card.classList.remove("clicked"));
-		fetchGameCards();
 		console.log("Game reset. Score is now 0. Clicked cards are:" + getSelectedCards());
 	});
 
