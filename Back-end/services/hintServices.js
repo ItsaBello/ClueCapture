@@ -53,10 +53,6 @@ async function submitHint(images, image_hint, hintText, gameCategory) {
 			})
 		);
 
-		// Optionally, associate only the hint-related images with the hint
-		// If you have a way to mark which images are related to the hint, do so here:
-		// For example, you could receive an array of image IDs or URLs for hint-specific images.
-
 		// Associate images related to the hint (many-to-many relationship)
 		await hint.addImages(hintImageInstances, { transaction });
 
