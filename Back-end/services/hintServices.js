@@ -40,7 +40,7 @@ async function submitHint(images, image_hint, hintText, gameCategory) {
                     hintImageInstances.push(imageInstance);  // Collect image instances that will be associated with the hint
 
                     // Create the image_hint join table entry
-                    await image_hint.create({
+                    await ImageHint.create({
                         hint_id: hint.hint_id,  // Use the hint's id
                         image_id: imageInstance.image_id  // Use the image's id
                     }, { transaction });

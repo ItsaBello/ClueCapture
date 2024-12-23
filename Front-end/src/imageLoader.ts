@@ -36,7 +36,7 @@ const queryOptions = [
 	"Musical Instruments",
 	"Robert Lehman Collection",
 	"Photographs",
-	"The American Wing",
+	"The American Wing"
 ];
 
 const metAPI = {
@@ -44,14 +44,14 @@ const metAPI = {
 		`https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=${query}`,
 	objectUrl: (id: string) =>
 		`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`,
-	extractImages: (data: any) => ({ imageUrl: data.primaryImageSmall, title: data.title }),
+	extractImages: (data: any) => ({imageUrl: data.primaryImageSmall, title: data.title})
 };
 
 const clevelandAPI = {
 	searchUrl: (query: string) =>
 		`https://openaccess-api.clevelandart.org/api/artworks/?q=${query}&has_image=1&`,
 	objectUrl: null, // Cleveland API includes all data in search response
-	extractImages: (data: any) => ({ imageUrl: data.images.web.url, title: data.title }),
+	extractImages: (data: any) => ({imageUrl: data.images.web.url, title: data.title})
 };
 
 const selectedApi = localStorage.getItem("selectedApi") || "met";
@@ -87,7 +87,7 @@ export async function fetchGameCards() {
 		// Preload all images
 		type PreloadedImage = {
 			img: HTMLImageElement;
-			object: { primaryImageSmall: string; title?: string };
+			object: {primaryImageSmall: string; title?: string};
 		};
 		const preloadedImages: PreloadedImage[] = await Promise.all(
 			randomizedObjects.map(
@@ -97,7 +97,7 @@ export async function fetchGameCards() {
 						img.src = object.primaryImageSmall;
 						img.alt = object.title || "Artwork";
 
-						img.onload = () => resolve({ img, object });
+						img.onload = () => resolve({img, object});
 						img.onerror = () =>
 							reject(new Error(`Failed to load image: ${object.primaryImageSmall}`));
 					})
@@ -105,7 +105,7 @@ export async function fetchGameCards() {
 		);
 
 		// Append all preloaded images to their respective cards
-		preloadedImages.forEach(({ img, object }, index) => {
+		preloadedImages.forEach(({img, object}, index) => {
 			const card = cards[index];
 			card.appendChild(img);
 
@@ -115,16 +115,10 @@ export async function fetchGameCards() {
 		console.error("Error fetching game cards:", error);
 	} finally {
 		cardImageMap.forEach((url, index) => {
-			console.log(`Card Index: ${index}, Image URL: ${url}`);
+			console.log(`Card Index: ${index + 1}, Image URL: ${url}`);
 		});
 		resetButton.disabled = false;
 		resetButton.classList.remove("loading");
 		cloud.style.display = "block";
 	}
 }
-
-// Reset game board
-resetButton.addEventListener("click", fetchGameCards);
-
-// // Initial board generation
-// fetchGameCards();
