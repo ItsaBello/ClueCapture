@@ -204,8 +204,8 @@ h1 {
 
 .score-caption-left {
 	position: relative;
-	top: -910px; /* Adjust as needed to position under playerName */
-	left: -690px; /* Align with the image-caption-left */
+	bottom: 400px;; /* Adjust as needed to position under playerName */
+	right: 500px; /* Align with the image-caption-left */
 	text-align: center;
 	color: white;
 	font-size: 20px; /* Adjust font size for visibility */

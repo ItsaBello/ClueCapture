@@ -1,5 +1,10 @@
 export class Card {
-	
+	public cardElement: HTMLElement;
+
+	constructor(cardElement: HTMLElement) {
+		this.cardElement = cardElement;
+		this.infoButtonListener();
+	}
 
 	public static createCardElement(index: number): HTMLElement {
 		const card = document.createElement("div");
@@ -31,5 +36,30 @@ export class Card {
 		card.appendChild(cardInner);
 
 		return card;
+	}
+
+	private infoButtonListener() {
+		const infoButton = this.cardElement.querySelector(".info-button") as HTMLButtonElement;
+		if (infoButton) {
+			infoButton.addEventListener("click", (event) => {
+				event.stopPropagation();
+				this.flipCard();
+			});
+		}
+	}
+	public flipCard() {
+		this.cardElement.classList.toggle("flipped");
+		const image = this.cardElement.querySelector("img") as HTMLElement;
+		if (image) {
+			image.classList.toggle("hidden");
+		}
+	}
+
+	public resetCard() {
+		this.cardElement.classList.remove("flipped", "clicked");
+		const image = this.cardElement.querySelector("img") as HTMLElement;
+		if (image) {
+			image.classList.remove("hidden");
+		}
 	}
 }
