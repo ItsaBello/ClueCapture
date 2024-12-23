@@ -57,7 +57,7 @@ const clevelandAPI = {
 const selectedApi = localStorage.getItem("selectedApi") || "met";
 const api = selectedApi === "cleveland" ? clevelandAPI : metAPI;
 
-export async function fetchGameCards() {
+export async function fetchGameCardsFromApi(){
 	resetButton.disabled = true;
 	resetButton.classList.add("loading");
 	const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=${queryObject}`; // Filter en Topic

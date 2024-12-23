@@ -1,5 +1,6 @@
 import {Card} from "./card.js";
-import {fetchGameCards} from "../imageLoaderFromApi.js";
+import {fetchGameCardsFromApi} from "../imageLoaderFromApi.js";
+import {fetchGameCardsFromDB} from "../imageLoaderFromDB.js";
 import {Score} from "./score.js";
 
 export class Board {
@@ -26,7 +27,7 @@ export class Board {
 
 	private init() {
 		this.generateCards(16);
-		fetchGameCards();
+		this.fetchGameCards();
 	}
 	private resetButtonListener(resetButtonId: string) {
 		const resetButton = document.getElementById(resetButtonId) as HTMLButtonElement;
@@ -42,6 +43,14 @@ export class Board {
 			const card = new Card(cardElement);
 			this.gameBoard.appendChild(cardElement);
 			cardElement.addEventListener("click", () => this.handleCardClick(card));
+		}
+	}
+
+	private fetchGameCards() {
+		if (window.mode === "api") {
+			fetchGameCardsFromApi();
+		}else{
+			fetchGameCardsFromDB();
 		}
 	}
 
@@ -75,14 +84,14 @@ export class Board {
 			this.indexOfClickedCards.splice(index, 1);
 			card.cardElement.classList.remove("clicked"); // Remove visual border
 			this.score.updateScore(this.clickedCards.length);
-            console.log(`Clicked cards: ${this.clickedCards.join(", ")}`);
+			console.log(`Clicked cards: ${this.clickedCards.join(", ")}`);
 		} else {
 			this.clickedCards.push(cardName); // Add card to the array
 			this.indexOfClickedCards.push(
 				parseInt(card.cardElement.getAttribute("data-name") || "0", 10)
 			);
 			this.score.updateScore(this.clickedCards.length);
-            card.cardElement.classList.add("clicked"); // Add visual border
+			card.cardElement.classList.add("clicked"); // Add visual border
 			console.log(`Clicked cards: ${this.clickedCards.join(", ")}`);
 		}
 	}
@@ -100,9 +109,10 @@ export class Board {
 		if (this.isFlipped(card)) {
 			return;
 		}
-        console.log(this.score.getScore());	
+		console.log(this.score.getScore());
 		// Prevent adding more than the selected number of cards
-		const selectedValue = parseInt(this.numberOfCards.value, 10);
+
+		const selectedValue = this.numberOfCards ? parseInt(this.numberOfCards.value, 10) : 16;
 		if (this.clickedCards.length >= selectedValue && !this.isCardSelected(cardName || "")) {
 			console.log(`You can only select up to ${selectedValue} cards.`);
 			return;
@@ -122,12 +132,12 @@ export class Board {
 		this.clickedCards.length = 0;
 		this.indexOfClickedCards.length = 0;
 		this.currentlyFlippedCard = null;
-        this.score.resetScore();
+		this.score.resetScore();
 		const cards = document.querySelectorAll(".card");
 		cards.forEach((cardElement) => {
 			const card = new Card(cardElement as HTMLElement);
 			card.resetCard();
 		});
-		fetchGameCards();
+		this.fetchGameCards();
 	}
 }
