@@ -204,7 +204,7 @@ h1 {
 
 .score-caption-left {
 	position: relative;
-	bottom: 400px;; /* Adjust as needed to position under playerName */
+	bottom: 400px; /* Adjust as needed to position under playerName */
 	right: 500px; /* Align with the image-caption-left */
 	text-align: center;
 	color: white;
@@ -220,7 +220,7 @@ h1 {
 #submitHintButton,
 #submitCardsButton,
 #nextGameButton,
-#getHintButton {
+#hintButton {
 	position: absolute; /* Fix them to the viewport */
 	z-index: 2; /* Ensure they stay above the game board */
 }
@@ -230,7 +230,7 @@ h1 {
 #submitHintButton,
 #submitCardsButton,
 #nextGameButton,
-#getHintButton {
+#hintButton {
 	background-color: #9ab9c1; /* Bright red background */
 	color: #03363d; /* White text */
 	width: 100px;
@@ -267,7 +267,7 @@ h1 {
 	right: 20px;
 }
 
-#getHintButton {
+#hintButton {
 	right: 750px;
 }
 
@@ -276,7 +276,7 @@ h1 {
 #submitHintButton:hover,
 #submitCardsButton:hover,
 #nextGameButton:hover,
-#getHintButton:hover {
+#hintButton:hover {
 	background-color: #03363d; /* Lighter red on hover */
 	border-color: white; /* Slightly lighter border */
 	color: white;
@@ -387,7 +387,7 @@ button:disabled:hover {
 }
 
 #resetButton.loading,
-#getHintButton.loading {
+#hintButton.loading {
 	background-color: #b9d5e9; /* Lichtere kleur tijdens het laden */
 	color: #000000;
 	cursor: not-allowed; /* Knop is niet klikbaar */
@@ -395,7 +395,7 @@ button:disabled:hover {
 }
 
 #resetButton.loading::after,
-#getHintButton.loading::after {
+#hintButton.loading::after {
 	content: "";
 	display: inline-block;
 	width: 20px;

@@ -1,7 +1,7 @@
-import {Card} from "./card.js";
+import {Card} from "./Card.js";
+import {Score} from "./Score.js";
 import {fetchGameCardsFromApi} from "../imageLoaderFromApi.js";
 import {fetchGameCardsFromDB} from "../imageLoaderFromDB.js";
-import {Score} from "./score.js";
 
 export class Board {
 	private gameBoard: HTMLElement;
@@ -49,7 +49,7 @@ export class Board {
 	private fetchGameCards() {
 		if (window.mode === "api") {
 			fetchGameCardsFromApi();
-		}else{
+		} else {
 			fetchGameCardsFromDB();
 		}
 	}
@@ -128,7 +128,8 @@ export class Board {
 			: null;
 	}
 
-	public resetGame() {
+	public async resetGame() {
+		window.UIManager.setResetButtonLoading(true);
 		this.clickedCards.length = 0;
 		this.indexOfClickedCards.length = 0;
 		this.currentlyFlippedCard = null;
@@ -138,6 +139,7 @@ export class Board {
 			const card = new Card(cardElement as HTMLElement);
 			card.resetCard();
 		});
-		this.fetchGameCards();
+		await this.fetchGameCards();
+		window.UIManager.setResetButtonLoading(false);
 	}
 }
