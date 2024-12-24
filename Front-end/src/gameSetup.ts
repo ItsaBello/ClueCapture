@@ -1,4 +1,4 @@
-import {Board} from "./classes/board.js";
+import {Board} from "./classes/Board.js";
 
 declare global {
 	var board: Board;
