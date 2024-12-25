@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./database.js'); // Importing sequelize instance
 
-// Define the Game model
 const GameModel = sequelize.define('Game', {
   game_id: {
     type: DataTypes.INTEGER,
@@ -17,7 +16,6 @@ const GameModel = sequelize.define('Game', {
   timestamps: false,
 });
 
-// Define the Hint model
 const HintModel = sequelize.define('Hint', {
   hint_id: {
     type: DataTypes.INTEGER,

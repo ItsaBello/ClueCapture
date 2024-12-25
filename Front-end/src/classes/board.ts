@@ -1,7 +1,7 @@
-import {Card} from "./Card.js";
+import {Card} from "./card.js";
 import {fetchGameCardsFromApi} from "../imageLoaderFromApi.js";
 import {fetchGameCardsFromDB} from "../imageLoaderFromDB.js";
-import {Score} from "./Score.js";
+import {Score} from "./score.js";
 
 export class Board {
 	private gameBoard: HTMLElement;
