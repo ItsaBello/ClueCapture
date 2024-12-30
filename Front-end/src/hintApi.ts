@@ -1,5 +1,5 @@
 import {getCardImageMap, getGameCatagory, getImageUrlByIndex} from "./imageLoaderFromApi.js";
-import {Board} from "./classes/Board.js";
+import {Board} from "./classes/board.js";
 // Function to handle hint submission
 
 declare const board: Board;

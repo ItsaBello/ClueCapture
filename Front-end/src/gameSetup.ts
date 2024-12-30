@@ -1,5 +1,5 @@
-import {UIManager} from "./classes/UIManager.js";
-import {Board} from "./classes/Board.js";
+import {UIManager} from "./classes/uiManager.js";
+import {Board} from "./classes/board.js";
 
 declare global {
 	var mode: "api" | "db";

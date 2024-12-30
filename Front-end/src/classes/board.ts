@@ -1,5 +1,5 @@
-import {Card} from "./Card.js";
-import {Score} from "./Score.js";
+import {Card} from "./card.js";
+import {Score} from "./score.js";
 import {fetchGameCardsFromApi} from "../imageLoaderFromApi.js";
 import {fetchGameCardsFromDB} from "../imageLoaderFromDB.js";
 
