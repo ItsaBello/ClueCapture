@@ -18,8 +18,10 @@
 		<div class="image-container-left">
 			<img src="../Images/StickMan.png" alt="PLAYER ONE" />
 		</div>
-		<div id="cloud" class="cloud">
-			<span class="cloud-text">Choose the cards connected to the hint!</span>
+		<div class="speech-bubble">
+			<span class="cloud-text"
+				>Please choose the cards connected to the hint and press 'Submit Cards'!</span
+			>
 		</div>
 		<p id="playerName" class="image-caption-left"></p>
 		<p id="scoreCounter" class="score-caption-left">Score: 0</p>
@@ -43,13 +45,13 @@
 		</script>
 
 		<div id="showHintContainer">
-			<label id="hintLabel">Hint:</label>
+			<div id="hintWrapper"></div>
+				<span id="hintLabel">Hint:</label>
+				<span id="hintText"></span>
+			</div>
+			<button id="getHintButton">Give Me A Hint!</button>
 			<button id="submitCardsButton" type="submit">Submit Cards</button>
 			<button id="nextGameButton">Start<br />Next<br />Game</button>
-			<button id="getHintButton">
-				Give<br />Me My <br />
-				Hint!
-			</button>
 		</div>
 
 		<div id="rulesModal" class="modal">

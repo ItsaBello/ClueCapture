@@ -18,8 +18,11 @@
 		<div class="image-container-left">
 			<img src="../Images/StickMan.png" alt="PLAYER ONE" />
 		</div>
-		<div id="cloud" class="cloud">
-			<span class="cloud-text">Submit a hint!</span>
+		<div class="speech-bubble">
+			<span class="cloud-text"
+				>Please enter a hint, choose how many cards are related to the hint and press 'Submit
+				Hint'!</span
+			>
 		</div>
 		<p id="playerName" class="image-caption-left"></p>
 		<p id="scoreCounter" class="score-caption-left">Score: 0</p>
@@ -48,7 +51,7 @@
 				<label id="numberOfCardsLabel"># of Cards:</label>
 				<input id="inputField" type="text" />
 				<button id="submitHintButton" type="submit">Submit Hint</button>
-				<!-- <button id="nextGameButton">Start<br />Next<br />Game</button> -->
+				<button id="nextGameButton">Start<br />Next<br />Game</button>
 				<select name="numberOfCards" id="numberOfCards">
 					<option value="2">2 cards</option>
 					<option value="3">3 cards</option>
@@ -70,7 +73,7 @@
 			</div>
 		</div>
 
-		<script type="module" src="../dist/imageLoaderFromApi.js"></script>
+		<script type="module" src="../dist/imageLoader.js"></script>
 		<script type="module" src="../dist/rulesButton.js"></script>
 		<script type="module" src="../dist/cardInteraction.js"></script>
 		<script type="module" src="../dist/cardInfoTurn.js"></script>
