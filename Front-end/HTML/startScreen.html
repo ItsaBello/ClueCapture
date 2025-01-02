@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="../CSS/startScreenStyle.css" />
-    <link rel="stylesheet" href="https://use.typekit.net/jfe7dsa.css" />
-    <title>Clue Capture Game</title>
-</head>
-<body>
-    <h1>Clue Capture</h1>
-    <form id="username-form">
-        <label for="name">Enter an username:</label>
-        <input id="name" type="text" >
-        <label for="apiSelection">Select API:</label>
-        <select id="apiSelection">
-            <option value="met">Metropolitan Museum of Art</option>
-            <option value="cleveland">Cleveland Museum of Art</option>
-        </select>
-        <button type="submit">Start</button>
-    </form>
-    <script src="../dist/startScreen.js"></script>
-</body>
-
+	<head>
+		<link rel="stylesheet" href="../CSS/startScreenStyle.css" />
+		<link rel="stylesheet" href="https://use.typekit.net/jfe7dsa.css" />
+		<title>Clue Capture Game</title>
+	</head>
+	<body>
+		<h1>Clue Capture</h1>
+		<form id="username-form">
+			<div class="startScreenContainer">
+				<label id="nameLabel" for="name">Enter an username:</label>
+				<input id="name" type="text" />
+				<label id="apiSelectionLabel" for="apiSelection">Select Collection:</label>
+				<select id="apiSelection">
+					<option value="met">Metropolitan Museum of Art</option>
+					<option value="cleveland">Cleveland Museum of Art</option>
+				</select>
+				<button id="startButton" type="submit">Start</button>
+			</div>
+		</form>
+		<script src="../dist/startScreen.js"></script>
+	</body>
 </html>
