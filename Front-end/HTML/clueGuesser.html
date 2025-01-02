@@ -5,7 +5,7 @@
 		<link rel="stylesheet" href="https://use.typekit.net/jfe7dsa.css" />
 	</head>
 
-	<body>
+	<body data-mode="db">
 		<h1>Clue Capture</h1>
 		<div class="game-board" id="gameBoard"></div>
 		<button id="resetButton">Reset Game</button>
@@ -46,7 +46,7 @@
 			<label id="hintLabel">Hint:</label>
 			<button id="submitCardsButton" type="submit">Submit Cards</button>
 			<button id="nextGameButton">Start<br />Next<br />Game</button>
-			<button id="getHintButton">
+			<button id="hintButton">
 				Give<br />Me My <br />
 				Hint!
 			</button>
@@ -67,6 +67,5 @@
 
 		<script type="module" src="../dist/gameSetup.js"></script>
 		<script type="module" src="../dist/imageLoaderFromDB.js"></script>
-		<script type="module" src="../dist/rulesButton.js"></script>
 	</body>
 </html>
