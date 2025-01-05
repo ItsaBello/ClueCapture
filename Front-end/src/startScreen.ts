@@ -9,10 +9,10 @@ form.addEventListener("submit", function (event) {
 
 	if (name.trim() !== "") {
 		localStorage.setItem("playerName", name); // Naam opslaan
-		window.location.href = "clueGuesser.html";
+		window.location.href = "clueMaker.html";
 	} else {
 		localStorage.setItem("playerName", "Player one"); // Standaardnaam opslaan
-		window.location.href = "clueGuesser.html";
+		window.location.href = "clueMaker.html";
 	}
 
 	// Get the selected API

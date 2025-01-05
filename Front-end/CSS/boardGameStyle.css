@@ -472,7 +472,7 @@ button:disabled:hover {
 .cloud {
 	position: absolute;
 	top: 25px; /* Adjust to position above the avatar */
-	right: 25%;
+	right: 5%;
 	transform: translateX(-50%); /* Center the cloud horizontally */
 	background-color: #fff;
 	padding: 8px 20px;
