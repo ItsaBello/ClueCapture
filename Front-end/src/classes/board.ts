@@ -29,6 +29,7 @@ export class Board {
 		this.generateCards(16);
 		this.fetchGameCards();
 	}
+
 	private resetButtonListener(resetButtonId: string) {
 		const resetButton = document.getElementById(resetButtonId) as HTMLButtonElement;
 
@@ -46,11 +47,11 @@ export class Board {
 		}
 	}
 
-	private fetchGameCards() {
+	private async fetchGameCards() {
 		if (window.mode === "api") {
-			fetchGameCardsFromApi();
+			await fetchGameCardsFromApi();
 		} else {
-			fetchGameCardsFromDB();
+			await fetchGameCardsFromDB();
 		}
 	}
 
