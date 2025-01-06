@@ -113,6 +113,5 @@ export async function fetchGameCardsFromApi(){
 		cardImageMap.forEach((url, index) => {
 			console.log(`Card Index: ${index + 1}, Image URL: ${url}`);
 		});
-		window.UIManager.showCloud();
 	}
 }

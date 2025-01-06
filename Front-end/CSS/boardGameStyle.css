@@ -213,6 +213,28 @@ h1 {
 	margin-top: 10px; /* Space between the elements */
 }
 
+#showHintContainer {
+	position: absolute;
+	bottom: 30px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 80%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 15px;
+}
+
+#hintWrapper {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 10px;
+	font-size: 1.2em;
+	color: white;
+	text-align: center;
+}
+
 #resetButton,
 #rulesButton,
 #inputField,
@@ -222,15 +244,7 @@ h1 {
 #nextGameButton,
 #hintButton {
 	position: absolute; /* Fix them to the viewport */
-	z-index: 2; /* Ensure they stay above the game board */
-}
-
-#resetButton,
-#rulesButton,
-#submitHintButton,
-#submitCardsButton,
-#nextGameButton,
-#hintButton {
+	z-index: 2;
 	background-color: #9ab9c1; /* Bright red background */
 	color: #03363d; /* White text */
 	width: 100px;
@@ -245,6 +259,7 @@ h1 {
 	justify-content: center; /* Horizontally center text */
 	cursor: pointer; /* Pointer cursor on hover */
 	transition: all 0.3s ease; /* Smooth transition effect */
+	transform-origin: center;
 }
 
 #resetButton {
@@ -256,7 +271,7 @@ h1 {
 }
 
 #submitHintButton {
-	right: 20px;
+	right: 140px;
 }
 
 #submitCardsButton {
@@ -269,6 +284,11 @@ h1 {
 
 #hintButton {
 	right: 750px;
+	left: 50%;
+	transform: translateX(-50%);
+	bottom: 0px;
+	margin-bottom: 20px;
+	padding: 15px 20px;
 }
 
 #resetButton:hover,
@@ -280,7 +300,7 @@ h1 {
 	background-color: #03363d; /* Lighter red on hover */
 	border-color: white; /* Slightly lighter border */
 	color: white;
-	transform: scale(1.1); /* Slightly increase size */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
 }
 
 #inputField,
@@ -294,7 +314,7 @@ h1 {
 	width: 300px; /* Set the width of the text field */
 	height: 40px; /* Set the height */
 	bottom: 20px; /* Distance from the top edge of the screen */
-	right: 140px; /* Distance from the right edge of the screen */
+	right: 260px; /* Distance from the right edge of the screen */
 	border: 2px solid #03363d; /* Border color */
 	border-radius: 8px; /* Rounded corners */
 	padding: 0 10px; /* Padding inside the text field */
@@ -314,12 +334,20 @@ h1 {
 }
 
 #inputLabel {
-	right: 450px;
+	right: 570px;
 }
 
 #hintLabel {
-	right: 450px; /* Distance from the right edge of the screen */
+	right: 470px; /* Distance from the right edge of the screen */
+	bottom: 40px;
+	margin: 0;
+	z-index: 2;
 }
+
+/* #hintText {
+	margin: 0;
+	text-align: center;
+} */
 
 .modal {
 	display: none; /* Hidden by default */
@@ -432,7 +460,7 @@ button:disabled:hover {
 #numberOfCards {
 	position: absolute;
 	bottom: 80px; /* Distance from the top of the container */
-	right: 140px; /* Distance from right edge of container */
+	right: 260px; /* Distance from right edge of container */
 	background-color: #9ab9c1;
 	color: #03363d;
 	height: 35px;
@@ -466,28 +494,32 @@ button:disabled:hover {
 	font-family: "owners", sans-serif;
 	color: white;
 	bottom: 73px; /* Distance from the top edge of the screen */
-	right: 450px; /* Distance from the right edge of the screen */
+	right: 570px; /* Distance from the right edge of the screen */
 }
 
-.cloud {
+.speech-bubble {
 	position: absolute;
-	top: 25px; /* Adjust to position above the avatar */
-	right: 5%;
-	transform: translateX(-50%); /* Center the cloud horizontally */
-	background-color: #fff;
-	padding: 8px 20px;
-	border-radius: 14px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-	max-width: 200px;
-	text-align: center;
-	display: none;
+	background-color: #f0f0f0;
+	color: #03363d;
+	border-radius: 10px;
+	padding: 15px;
+	width: 200px;
+	font-family: "owners", sans-serif;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+	top: 30%;
+	right: 8%;
+	transform: translateY(10px);
 }
-
-/* Text inside the cloud */
-.cloud-text {
-	font-size: 16px;
-	font-weight: bold;
-	color: #333;
+.speech-bubble::after {
+	content: "";
+	position: absolute;
+	top: -10px;
+	left: 20px;
+	width: 0;
+	height: 0;
+	border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid #f1f1f1;
 }
 
 #numberOfcards:focus {

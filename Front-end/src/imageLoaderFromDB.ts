@@ -21,10 +21,8 @@ export async function fetchGameCardsFromDB() {
 	const images = data.Images || [];
 	const gameId = data.game_id || "No game id available";
 
-	console.log(gameId, hint, images); // Print de loaded game data naar browser console
+		console.log(gameId, hint, images); // Print de loaded game data naar browser console
 
-	// Display the hint
-	window.UIManager.displayHint(hint);
 	// Check if images are available
 	if (images.length !== 16) {
 		throw new Error("Invalid number of images received.");
