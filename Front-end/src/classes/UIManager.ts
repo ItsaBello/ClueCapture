@@ -2,7 +2,7 @@ import {fetchGameCardsFromDB} from "../imageLoaderFromDB.js";
 
 export class UIManager {
 	private hintButton: HTMLButtonElement;
-	private hintLabel: HTMLLabelElement;
+	private hintText: HTMLSpanElement;
 	private resetButton: HTMLButtonElement;
 	private rulesButton: HTMLButtonElement;
 	private rulesModal: HTMLDivElement;
@@ -11,12 +11,12 @@ export class UIManager {
 
 	constructor() {
 		this.hintButton = document.getElementById("hintButton") as HTMLButtonElement;
-		this.hintLabel = document.getElementById("hintLabel") as HTMLLabelElement;
+		this.hintText = document.getElementById("hintText") as HTMLSpanElement;
 		this.resetButton = document.getElementById("resetButton") as HTMLButtonElement;
 		this.rulesButton = document.getElementById("rulesButton") as HTMLButtonElement;
 		this.rulesModal = document.getElementById("rulesModal") as HTMLDivElement;
 		this.closeRulesButton = document.getElementById("closeRulesButton") as HTMLButtonElement;
-		this.cloud = document.getElementById("cloud") as HTMLSpanElement;
+		this.cloud = document.getElementById("cloud-text") as HTMLSpanElement;
 
 		this.init();
 	}
@@ -60,8 +60,7 @@ export class UIManager {
 	}
 
 	public displayHint(hint: string) {
-		this.hintLabel.textContent = "Hint: " + hint;
-		this.cloud.style.display = "block";
+		this.hintText.textContent = hint;
 	}
 
 	public setResetButtonLoading(isLoading: boolean) {

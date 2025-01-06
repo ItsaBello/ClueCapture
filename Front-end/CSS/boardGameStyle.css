@@ -10,6 +10,7 @@ body {
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	justify-content: flex-start;
 	align-items: center;
 	font-family: "owners", sans-serif;
 	font-weight: 200;
@@ -338,16 +339,12 @@ h1 {
 }
 
 #hintLabel {
-	right: 470px; /* Distance from the right edge of the screen */
-	bottom: 40px;
-	margin: 0;
+	bottom: 450px;
+	margin-top: 20px;
+	color: white;
+	text-align: center;
 	z-index: 2;
 }
-
-/* #hintText {
-	margin: 0;
-	text-align: center;
-} */
 
 .modal {
 	display: none; /* Hidden by default */
@@ -357,7 +354,7 @@ h1 {
 	top: 0;
 	width: 100%; /* Full width */
 	height: 100%; /* Full height */
-	background-color: rgba(0, 0, 0, 0.5); /* Transparent black background */
+	background-color: rgba(165, 11, 11, 0.5); /* Transparent black background */
 	overflow: auto; /* Prevents content from overflowing the modal */
 }
 

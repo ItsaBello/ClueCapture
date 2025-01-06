@@ -2,8 +2,7 @@ export async function fetchGameCardsFromDB() {
 	const gameBoard = document.getElementById("gameBoard") as HTMLElement;
 	const cards = gameBoard.querySelectorAll(".card-image");
 	cards.forEach((card) => (card.innerHTML = "")); // Clear the game board
-	
-	
+
 	// Fetch hint and images
 	const response = await fetch("http://localhost:3000/api/getHint", {
 		method: "GET"
@@ -21,8 +20,9 @@ export async function fetchGameCardsFromDB() {
 	const images = data.Images || [];
 	const gameId = data.game_id || "No game id available";
 
-		console.log(gameId, hint, images); // Print de loaded game data naar browser console
+	console.log(gameId, hint, images); // Print de loaded game data naar browser console
 
+	window.UIManager.displayHint(hint);
 	// Check if images are available
 	if (images.length !== 16) {
 		throw new Error("Invalid number of images received.");
