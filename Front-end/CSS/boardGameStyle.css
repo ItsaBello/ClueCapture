@@ -72,6 +72,15 @@ h1 {
 	outline: 5px solid #e6c200; /* Adjust the color to your preference */
 }
 
+.card.correct {
+	outline: 5px solid green; /*Adjust the colour to your preference */
+}
+
+
+.card.incorrect {
+	outline: 5px solid red; /*Adjust the colour to your preference */
+}
+
 .card.clicked img {
 	opacity: 0.5;
 }
