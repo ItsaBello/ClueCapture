@@ -56,7 +56,6 @@ const selectedApi = localStorage.getItem("selectedApi") || "met";
 const api = selectedApi === "cleveland" ? clevelandAPI : metAPI;
 
 export async function fetchGameCardsFromApi(){
-	window.UIManager.setResetButtonLoading(true);
 	const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?hasImages=true&isHighlight=true&q=${queryObject}`; // Filter en Topic
 	const cards = gameBoard.querySelectorAll(".card-image");
 	cards.forEach((card) => (card.innerHTML = "")); // Clear board
@@ -114,7 +113,6 @@ export async function fetchGameCardsFromApi(){
 		cardImageMap.forEach((url, index) => {
 			console.log(`Card Index: ${index + 1}, Image URL: ${url}`);
 		});
-		window.UIManager.setResetButtonLoading(false);
 		window.UIManager.showCloud();
 	}
 }

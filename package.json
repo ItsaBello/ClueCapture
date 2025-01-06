@@ -1,18 +1,26 @@
 {
-  "name": "cluecapture",
-  "version": "1.0.0",
-  "description": "PictureGame",
-  "main": "index.js",
-  "scripts": {
-    "test": "test"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "mysql2": "^3.11.5",
-    "nodemon": "^3.1.9",
-    "sequelize": "^6.37.5"
-  }
+	"name": "cluecapture",
+	"version": "1.0.0",
+	"description": "PictureGame",
+	"main": "index.js",
+	"scripts": {
+		"test": "test",
+		"build": "tsc -p Front-end",
+		"build:watch": "tsc -p Front-end -w",
+		"serve": "nodemon Back-end/server.js",
+		"start": "concurrently \"npm run serve\" \"npm run build:watch\""
+	},
+	"author": "",
+	"license": "ISC",
+	"dependencies": {
+		"cors": "^2.8.5",
+		"express": "^4.21.2",
+		"mysql2": "^3.11.5",
+		"nodemon": "^3.1.9",
+		"sequelize": "^6.37.5"
+	},
+	"devDependencies": {
+		"concurrently": "^9.1.2",
+		"typescript": "^5.7.2"
+	}
 }
