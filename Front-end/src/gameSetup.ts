@@ -1,4 +1,4 @@
-import {UIManager} from "./classes/UIManager.js";
+import {UIManager} from "./classes/uiManager.js";
 import {Board} from "./classes/board.js";
 
 declare global {

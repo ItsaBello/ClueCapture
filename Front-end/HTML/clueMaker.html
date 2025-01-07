@@ -7,25 +7,26 @@
 
 	<body data-mode="api">
 		<h1>Clue Capture</h1>
-		<div class="game-board" id="gameBoard"></div>
-		<button id="resetButton">Reset Game</button>
-		<button id="rulesButton">Rules</button>
+		<div class="top-screen">
+			<div class="image-container-left">
+				<img src="../Images/StickMan.png" alt="PLAYER ONE" />
+				<p id="playerName" class="image-caption-left"></p>
+				<p id="scoreCounter" class="score-caption-left">Score: 0</p>
+			</div>
+			<div class="image-container-right">
+				<img src="../Images/Clue Captain no background.png" alt="CLUE CAPTAIN" />
+				<p class="image-caption-right">Clue Captain</p>
+				<div class="speech-bubble">
+					<span class="cloud-text"
+						>Please enter a hint, choose how many cards are related to the hint and press 'Submit
+						Hint'!</span
+					>
+				</div>
+			</div>
+		</div>
 
-		<div class="image-container-right">
-			<img src="../Images/Clue Captain blue artboard.png" alt="CLUE CAPTAIN" />
-		</div>
-		<p class="image-caption-right">Clue Captain</p>
-		<div class="image-container-left">
-			<img src="../Images/StickMan.png" alt="PLAYER ONE" />
-		</div>
-		<div class="speech-bubble">
-			<span class="cloud-text"
-				>Please enter a hint, choose how many cards are related to the hint and press 'Submit
-				Hint'!</span
-			>
-		</div>
-		<p id="playerName" class="image-caption-left"></p>
-		<p id="scoreCounter" class="score-caption-left">Score: 0</p>
+		<div class="game-board" id="gameBoard"></div>
+
 		<script>
 			const name = localStorage.getItem("playerName") || "Player one";
 			const playerNameElement = document.getElementById("playerName");
@@ -45,19 +46,27 @@
 			}
 		</script>
 
-		<div id="hintFormContainer">
-			<form id="hintForm">
-				<label id="inputLabel">Enter Clue:</label>
-				<label id="numberOfCardsLabel"># of Cards:</label>
-				<input id="inputField" type="text" />
-				<button id="submitHintButton" type="submit">Submit Hint</button>
-				<button id="nextGameButton">Start<br />Next<br />Game</button>
-				<select name="numberOfCards" id="numberOfCards">
-					<option value="2">2 cards</option>
-					<option value="3">3 cards</option>
-					<option value="4">4 cards</option>
-				</select>
-			</form>
+		<div class="bottom-screen">
+			<button id="resetButton">Reset Game</button>
+			<button id="rulesButton">Rules</button>
+			<div id="hintFormContainer">
+				<form id="hintForm">
+					<div class="group">
+						<label id="numberOfCardsLabel"># of Cards:</label>
+						<select name="numberOfCards" id="numberOfCards">
+							<option value="2">2 cards</option>
+							<option value="3">3 cards</option>
+							<option value="4">4 cards</option>
+						</select>
+					</div>
+					<div class="group">
+						<label id="inputLabel">Enter Clue:</label>
+						<input id="inputField" type="text" />
+					</div>
+				</form>
+			</div>
+			<button id="submitHintButton" type="submit">Submit Hint</button>
+			<button id="nextGameButton">Start<br />Next<br />Game</button>
 		</div>
 
 		<div id="rulesModal" class="modal">
