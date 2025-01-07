@@ -41,8 +41,8 @@ h1 {
 }
 
 .card {
-	width: 100px;
-	height: 100px;
+	width: 120px;
+	height: 120px;
 	background-color: white;
 	color: white;
 	display: flex;
@@ -61,8 +61,8 @@ h1 {
 
 .card img {
 	position: absolute;
-	width: 100px;
-	height: 100px;
+	width: 120px;
+	height: 120px;
 	border-radius: 8px;
 	z-index: 8;
 }
@@ -149,13 +149,13 @@ h1 {
 	flex-direction: column;
 	align-items: center; /* Center vertically */
 	width: 250px; /* Pas de breedte aan naar wens */
-	height: auto; /* Pas de hoogte aan naar wens */
+	height: 175px; /* Pas de hoogte aan naar wens */
 }
 
 .image-container-left img,
 .image-container-right img {
 	width: 250px; /* Match the width of the container */
-	height: 125px;
+	height: 175px;
 	object-fit: contain;
 	background-color: #9ab9c1;
 	border-radius: 20px;
@@ -196,21 +196,25 @@ h1 {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: center;
 	padding: 20px;
 	position: fixed;
 	bottom: 0;
+}
+
+#hintForm {
+	margin-right: -100px;
 }
 
 #resetButton,
 #rulesButton,
 #submitHintButton,
 #submitCardsButton,
-#nextGameButton,
 #hintButton {
 	background-color: #9ab9c1; /* Bright red background */
 	color: #03363d; /* White text */
 	width: 100px;
+	min-width: 100px;
 	height: 100px;
 	font-size: 18px; /* Slightly larger font */
 	font-weight: bold; /* Make the text bold */
@@ -227,7 +231,6 @@ h1 {
 #rulesButton:hover,
 #submitHintButton:hover,
 #submitCardsButton:hover,
-#nextGameButton:hover,
 #hintButton:hover {
 	background-color: #03363d; /* Lighter red on hover */
 	border-color: white; /* Slightly lighter border */
@@ -235,16 +238,19 @@ h1 {
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Optional shadow effect */
 }
 
-.group {
+.clueGroup {
 	display: flex;
 	align-items: center;
 	margin: 10px;
 }
+
 #rulesButton {
-	margin-left: -75px;
+	margin-right: 40vw;
 }
+
 #submitHintButton {
-	margin-right: -75px;
+	flex-direction: row;
+	margin-right: -100px;
 }
 
 #inputField {
