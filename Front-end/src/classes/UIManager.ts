@@ -15,7 +15,7 @@ export class UIManager {
 		this.resetButton = document.getElementById("resetButton") as HTMLButtonElement;
 		this.rulesButton = document.getElementById("rulesButton") as HTMLButtonElement;
 		this.rulesModal = document.getElementById("rulesModal") as HTMLDivElement;
-		this.closeRulesButton = document.getElementById("closeRulesButton") as HTMLButtonElement;
+		this.closeRulesButton = document.getElementById("close") as HTMLButtonElement;
 		this.cloud = document.getElementById("cloud-text") as HTMLSpanElement;
 
 		this.init();
