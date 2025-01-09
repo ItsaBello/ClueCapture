@@ -8,7 +8,6 @@ export class Board {
 	private numberOfCards: HTMLSelectElement;
 	private clickedCards: string[] = [];
 	private indexOfClickedCards: number[] = [];
-	private currentlyFlippedCard: HTMLElement | null = null;
 	private score: Score;
 
 	constructor(
@@ -97,17 +96,10 @@ export class Board {
 		}
 	}
 
-	private flipBackCard(card: Card): void {
-		if (this.currentlyFlippedCard) {
-			const previousCard = new Card(this.currentlyFlippedCard);
-			previousCard.flipCard();
-		}
-	}
-
 	public handleCardClick(card: Card) {
 		const cardName = card.cardElement.getAttribute("data-name");
 
-		if (this.isFlipped(card)) {
+		if (card.cardElement.classList.contains("big")) {
 			return;
 		}
 		console.log(this.score.getScore());
@@ -122,18 +114,12 @@ export class Board {
 		if (cardName) {
 			this.toggleCardSelection(card, cardName);
 		}
-		this.flipBackCard(card);
-
-		this.currentlyFlippedCard = card.cardElement.classList.contains("flipped")
-			? card.cardElement
-			: null;
 	}
 
 	public async resetGame() {
 		window.UIManager.setResetButtonLoading(true);
 		this.clickedCards.length = 0;
 		this.indexOfClickedCards.length = 0;
-		this.currentlyFlippedCard = null;
 		this.score.resetScore();
 		const cards = document.querySelectorAll(".card");
 		cards.forEach((cardElement) => {
