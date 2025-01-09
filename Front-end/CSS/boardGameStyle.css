@@ -284,7 +284,7 @@ h1 {
 	top: 0;
 	width: 100%; /* Full width */
 	height: 100%; /* Full height */
-	background-color: rgba(165, 11, 11, 0.5); /* Transparent black background */
+	background-color: rgba(3, 54, 61, 0.5); /* Transparent black background */
 	overflow: auto; /* Prevents content from overflowing the modal */
 }
 
@@ -330,10 +330,10 @@ h1 {
 
 .modal-content li {
 	font-family: "owners-wide", sans-serif;
-	font-weight: 200;
-	font-size: 18px; /* Slightly larger text for rules */
+	font-weight: 100;
+	font-size: 12px; /* Slightly larger text for rules */
 	color: #333; /* Dark text color for readability */
-	margin-bottom: 10px; /* Space between each rule */
+	margin-bottom: 5px; /* Space between each rule */
 }
 
 button:disabled:hover {
