@@ -69,15 +69,24 @@ export class Card {
 		if (Card.currentEnlargedCard && Card.currentEnlargedCard !== this) {
 			Card.currentEnlargedCard.resetCard();
 		}
-		this.cardElement.classList.add("big");
-		if (this.textBox) {
-			this.textBox.classList.add("see");
-		}
+		this.cardElement.classList.add("animatingCard");
+		this.cardElement.addEventListener(
+			"animationend",
+			() => {
+				this.cardElement.classList.remove("animatingCard");
+
+				this.cardElement.classList.add("big");
+				if (this.textBox) {
+					this.textBox.classList.add("see");
+				}
+			},
+			{once: true}
+		);
 		Card.currentEnlargedCard = this;
 	}
 
 	public resetCard() {
-		this.cardElement.classList.remove("big");
+		this.cardElement.classList.remove("big", "animatingCard");
 		this.textBox.classList.remove("see");
 		this.cardElement.classList.remove("clicked");
 		const image = this.cardElement.querySelector("img") as HTMLElement;

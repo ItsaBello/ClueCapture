@@ -18,7 +18,6 @@ body {
 }
 
 h1 {
-	font-family: "owners", sans-serif;
 	font-weight: 500;
 	font-size: 60px;
 }
@@ -90,7 +89,6 @@ h1 {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	transform-style: preserve-3d;
 }
 
 .card-front {
@@ -103,8 +101,6 @@ h1 {
 .text-box {
 	position: absolute;
 	top: 50%;
-	left: 50%;
-	transform: translateX(-50%);
 	width: 100%;
 	padding: 5px;
 	text-align: center;
@@ -114,15 +110,22 @@ h1 {
 	z-index: 10;
 }
 
-.card.big {
-	animation: spinAndGrow 1s linear;
+.animatingCard {
+	position: absolute;
+	top: 40%;
+	left: 45%;
 	z-index: 10;
-	position: absolute; /* Zorg ervoor dat de kaart wordt gepositioneerd ten opzichte van het scherm */
-	top: 40%; /* Plaats de kaart in het verticale midden van het scherm */
-	left: 45%; /* Plaats de kaart in het horizontale midden van het scherm */
-	transform: translate(0%, 20%) scale(4) rotateY(360deg); /* Centreer de kaart en vergroot deze */
+	animation: spinAndGrow 1s linear;
+}
+
+.card.big {
 	height: 200px;
-	
+	z-index: 10;
+	position: absolute;
+	top: 40%;
+	left: 45%;
+	transform: translate(0%, 20%) scale(4);
+	cursor: default;
 }
 
 .text-box.see {
@@ -442,5 +445,23 @@ button:disabled:hover {
 	}
 	100% {
 		transform: scale(4) rotate(720deg);
+	}
+}
+
+@keyframes expandHeight {
+	from {
+		max-height: 100px;
+	}
+	to {
+		max-height: 300px;
+	}
+}
+
+@keyframes collapseHeight {
+	from {
+		max-height: 300px;
+	}
+	to {
+		max-height: 100px;
 	}
 }
