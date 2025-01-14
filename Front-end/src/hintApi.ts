@@ -92,6 +92,10 @@ function initializeHintForm(): void {
 
     removeSpacesOnInput(inputField);
 
+    inputField.addEventListener("input", () => {
+        inputField.value = inputField.value.replace(/\d/g, "");
+    });
+
     // Prevent default behavior on form submit and handle the hint submission
     form.addEventListener("submit", async (event: Event) => {
         event.preventDefault(); // Prevent page refresh
