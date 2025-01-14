@@ -37,7 +37,7 @@ h1 {
 	display: grid;
 	grid-template-columns: repeat(4, 125px);
 	gap: 10px;
-	margin-top: -250px;
+	margin-top: -150px;
 }
 
 .card {
