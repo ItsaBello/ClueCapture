@@ -7,7 +7,10 @@
 </head>
 
 <body data-mode="db">
-	<h1>Clue Capture</h1>
+	<div class="header">
+		<button id="backButton">Start screen</button>
+		<h1>Clue Capture</h1>
+	</div>
 	<div class="top-screen">
 		<div class="image-container-left">
 			<img src="../Images/StickMan.png" alt="PLAYER ONE" />
@@ -61,40 +64,49 @@
 
 	<div id="rulesModal" class="modal">
 		<div class="modal-content">
-			<span class="close", id="close">&times;</span>
+			<span class="close" , id="close">&times;</span>
 			<h2>Game Rules</h2>
 			<p>Here are the rules of Clue Capture!</p>
 			<ul>
 				<li><strong>Aantal spelers:</strong> 1 speler
-					<br><strong>Benodigdheden: </strong>Een computer of apparaat met toegang tot de ClueCapture-webapplicatie</li>
+					<br><strong>Benodigdheden: </strong>Een computer of apparaat met toegang tot de
+					ClueCapture-webapplicatie
+				</li>
 				<li><strong> Doel van het spel</strong>
 
-					<br>Het doel van ClueCapture is om creatieve hints te bedenken en plaatjes correct aan elkaar te koppelen. Door slim te spelen, verzamel je punten en verbeter je je persoonlijke highscore.</li>
+					<br>Het doel van ClueCapture is om creatieve hints te bedenken en plaatjes correct aan elkaar te
+					koppelen. Door slim te spelen, verzamel je punten en verbeter je je persoonlijke highscore.
+				</li>
 				<li><strong>Opzet van het spel</strong>
-					<br>1.	Het speelveld bestaat uit een 4x4-rooster van 16 plaatjes.
-					<br>2.	Je speelt afwisselend in twee rollen: Clue Maker en Clue Guesser.
-					<br>3.	Er is een tekstveld om hints in te voeren en een reset-knop om het spel opnieuw te starten.</li>
+					<br>1. Het speelveld bestaat uit een 4x4-rooster van 16 plaatjes.
+					<br>2. Je speelt afwisselend in twee rollen: Clue Maker en Clue Guesser.
+					<br>3. Er is een tekstveld om hints in te voeren en een reset-knop om het spel opnieuw te starten.
+				</li>
 				<li><strong>Spelverloop</strong>
 					<br><u>Rol: Clue Maker</u>
-						<br>•	Als Clue Maker bedenk je een hint die verband houdt met 2 tot 4 plaatjes op het speelveld.
-						<br>•	Voer de hint in het tekstveld in.
-						<br>•	Klik op de plaatjes die bij jouw hint passen om ze te selecteren.
-						<br>•	Bevestig je keuze.
-					
+					<br>• Als Clue Maker bedenk je een hint die verband houdt met 2 tot 4 plaatjes op het speelveld.
+					<br>• Voer de hint in het tekstveld in.
+					<br>• Klik op de plaatjes die bij jouw hint passen om ze te selecteren.
+					<br>• Bevestig je keuze.
+
 					<br><u>Rol: Clue Guesser</u>
-						<br>•	Je wisselt automatisch van rol en word de Clue Guesser.
-						<br>•	Bekijk de hint die een andere speler heeft ingevuld.
-						<br>•	Probeer door op de plaatjes te klikken de juiste plaatjes te kiezen die bij de hint horen.
-						<br>•	Voor elk correct geraden plaatje verdien je 1 punt.
-						<br>•	Als je alle geselecteerde plaatjes correct koppelt, verdien je extra punten en kun je direct doorgaan naar de volgende ronde.</li>
+					<br>• Je wisselt automatisch van rol en word de Clue Guesser.
+					<br>• Bekijk de hint die een andere speler heeft ingevuld.
+					<br>• Probeer door op de plaatjes te klikken de juiste plaatjes te kiezen die bij de hint horen.
+					<br>• Voor elk correct geraden plaatje verdien je 1 punt.
+					<br>• Als je alle geselecteerde plaatjes correct koppelt, verdien je extra punten en kun je direct
+					doorgaan naar de volgende ronde.
+				</li>
 				<li><strong>Puntentelling</strong>
-						<br>•	Alle geselecteerde plaatjes correct geraden: +3 punten
-						<br>•	Een deel van de plaatjes correct geraden: +1 punt
-						<br>•	Geen correct geraden plaatjes: 0 punten
-						<br> Let op: Het aantal punten per ronde is afhankelijk van je prestaties als Clue Guesser.</li>
+					<br>• Alle geselecteerde plaatjes correct geraden: +3 punten
+					<br>• Een deel van de plaatjes correct geraden: +1 punt
+					<br>• Geen correct geraden plaatjes: 0 punten
+					<br> Let op: Het aantal punten per ronde is afhankelijk van je prestaties als Clue Guesser.
+				</li>
 				<li><strong>Ronde afronden</strong>
-						<br>•	Na elke ronde wissel je automatisch van rol: van Clue Maker naar Clue Guesser of andersom.
-						<br>•	Het spel gaat door totdat je ervoor kiest te stoppen.</li>
+					<br>• Na elke ronde wissel je automatisch van rol: van Clue Maker naar Clue Guesser of andersom.
+					<br>• Het spel gaat door totdat je ervoor kiest te stoppen.
+				</li>
 			</ul>
 		</div>
 	</div>
@@ -102,4 +114,5 @@
 	<script type="module" src="../dist/gameSetup.js"></script>
 	<script type="module" src="../dist/imageLoaderFromDB.js"></script>
 </body>
+
 </html>

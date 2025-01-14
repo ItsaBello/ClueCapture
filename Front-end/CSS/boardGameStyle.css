@@ -22,6 +22,14 @@ h1 {
 	font-weight: 500;
 	font-size: 60px;
 }
+.header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin-top: 10px;
+}
 
 .top-screen {
 	width: 100%;
@@ -37,7 +45,7 @@ h1 {
 	display: grid;
 	grid-template-columns: repeat(4, 125px);
 	gap: 10px;
-	margin-top: -150px;
+	margin-top: -160px;
 }
 
 .card {
@@ -213,7 +221,8 @@ h1 {
 #rulesButton,
 #submitHintButton,
 #submitCardsButton,
-#hintButton {
+#hintButton,
+#backButton {
 	background-color: #9ab9c1; /* Bright red background */
 	color: #03363d; /* White text */
 	width: 100px;
@@ -234,7 +243,8 @@ h1 {
 #rulesButton:hover,
 #submitHintButton:hover,
 #submitCardsButton:hover,
-#hintButton:hover {
+#hintButton:hover,
+#backButton:hover {
 	background-color: #03363d; /* Lighter red on hover */
 	border-color: white; /* Slightly lighter border */
 	color: white;
@@ -265,6 +275,18 @@ h1 {
 	position: fixed;
 	right: 46%;
 	bottom: 20px;
+}
+
+#backButton {
+	margin-right: 20px;
+}
+
+#backButton::before {
+	content: "←";
+	position: relative;
+	top: 20px;
+	right: 30px;
+	font-size: 20px;
 }
 
 #inputField {

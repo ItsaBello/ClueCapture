@@ -5,6 +5,7 @@ export class UIManager {
 	private hintText: HTMLSpanElement;
 	private resetButton: HTMLButtonElement;
 	private rulesButton: HTMLButtonElement;
+	private backButton: HTMLButtonElement;
 	private rulesModal: HTMLDivElement;
 	private closeRulesButton: HTMLButtonElement;
 	private cloud: HTMLSpanElement;
@@ -14,6 +15,7 @@ export class UIManager {
 		this.hintText = document.getElementById("hintText") as HTMLSpanElement;
 		this.resetButton = document.getElementById("resetButton") as HTMLButtonElement;
 		this.rulesButton = document.getElementById("rulesButton") as HTMLButtonElement;
+		this.backButton = document.getElementById("backButton") as HTMLButtonElement;
 		this.rulesModal = document.getElementById("rulesModal") as HTMLDivElement;
 		this.closeRulesButton = document.getElementById("close") as HTMLButtonElement;
 		this.cloud = document.getElementById("cloud-text") as HTMLSpanElement;
@@ -30,6 +32,9 @@ export class UIManager {
 		}
 		if (this.closeRulesButton) {
 			this.closeRulesButton.addEventListener("click", () => this.toggleRulesListener());
+		}
+		if (this.backButton) {
+			this.backButton.addEventListener("click", () => this.backToMenu());
 		}
 		window.addEventListener("click", this.windowClickListener.bind(this));
 	}
@@ -75,5 +80,9 @@ export class UIManager {
 	}
 	public showCloud() {
 		this.cloud.style.display = "block";
+	}
+
+	public backToMenu(): void {
+		window.location.href = "startScreen.html";
 	}
 }
