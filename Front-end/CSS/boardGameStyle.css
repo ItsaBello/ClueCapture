@@ -302,14 +302,6 @@ h1 {
 	bottom: 2px;
 }
 
-/* #backButton::before {
-	content: "←";
-	position: relative;
-	top: 20px;
-	right: 30px;
-	font-size: 20px;
-} */
-
 #inputField {
 	width: 250px; /* Set the width of the text field */
 	height: 40px; /* Set the height */
