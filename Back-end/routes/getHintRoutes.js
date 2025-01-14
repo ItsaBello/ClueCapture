@@ -23,3 +23,4 @@ router.get("/api/getHint", async (req, res) => {
 });
 
 module.exports = router;
+
