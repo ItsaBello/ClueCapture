@@ -1,5 +1,5 @@
 const sequelize = require("../database.js");
-const { Game, Hint, Image } = require("../models");
+const { Game, Hint, Image, ImageHint  } = require("../models");
 
 async function getHint() {
   try {
@@ -22,4 +22,4 @@ async function getHint() {
   }
 }
 
-module.exports = { getHint };
+module.exports = {getHint };

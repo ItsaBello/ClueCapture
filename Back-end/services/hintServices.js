@@ -18,7 +18,9 @@ async function submitHint(images, image_hint, hintText, gameCategory) {
 		const hint = await Hint.create(
 			{
 				hint_text: hintText,
-				game_id: game.game_id, // Link the hint to the new game
+				number_of_images: image_hint.length,
+				game_id: game.game_id,
+				 // Link the hint to the new game
 			},
 			{ transaction }
 		);

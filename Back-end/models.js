@@ -35,6 +35,9 @@ const HintModel = sequelize.define('Hint', {
     type: DataTypes.STRING(255),
     allowNull: false,
   },
+  number_of_images: {
+    type: DataTypes.INTEGER
+  }
 }, {
   tableName: 'hint',
   timestamps: false,
