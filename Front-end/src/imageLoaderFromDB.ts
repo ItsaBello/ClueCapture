@@ -1,4 +1,5 @@
 export async function fetchGameCardsFromDB() {
+	const maxSelectableCards = document.getElementById("maxSelectedCards") as HTMLElement;
 	const gameBoard = document.getElementById("gameBoard") as HTMLElement;
 	const cards = gameBoard.querySelectorAll(".card-image");
 	cards.forEach((card) => (card.innerHTML = "")); // Clear the game board
@@ -18,9 +19,11 @@ export async function fetchGameCardsFromDB() {
 	// Extract hint and images from the response
 	const hint = data.Hints[0]?.hint_text || "No hint available";
 	const images = data.Images || [];
+	const numberOfImages = data.Hints[0].number_of_images;
 	const gameId = data.game_id || "No game id available";
+	maxSelectableCards.innerText = numberOfImages;
 
-	console.log(gameId, hint, images); // Print de loaded game data naar browser console
+	console.log(gameId, hint, images, numberOfImages); // Print de loaded game data naar browser console
 
 	window.UIManager.displayHint(hint);
 	// Check if images are available

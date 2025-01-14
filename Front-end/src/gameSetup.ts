@@ -13,6 +13,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	console.log("Game mode:", mode);
 	window.mode = mode;
-	window.board = new Board("gameBoard", "numberOfCards", "resetButton", "scoreCounter");
+	window.board = new Board("gameBoard", "numberOfCards", "maxSelectedCards", "resetButton", "scoreCounter");
 	window.UIManager = new UIManager();
 });

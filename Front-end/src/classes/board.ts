@@ -6,6 +6,7 @@ import {fetchGameCardsFromDB} from "../imageLoaderFromDB.js";
 export class Board {
 	private gameBoard: HTMLElement;
 	private numberOfCards: HTMLSelectElement;
+	private maxSelectableCards: HTMLElement;
 	private clickedCards: string[] = [];
 	private indexOfClickedCards: number[] = [];
 	private score: Score;
@@ -13,11 +14,13 @@ export class Board {
 	constructor(
 		gameboardId: string,
 		numberOfCardsId: string,
+		maxSelectableCards: string,
 		resetButtonId: string,
-		scoreELementId: string
+		scoreELementId: string,
 	) {
 		this.gameBoard = document.getElementById(gameboardId) as HTMLElement;
 		this.numberOfCards = document.getElementById(numberOfCardsId) as HTMLSelectElement;
+		this.maxSelectableCards = document.getElementById(maxSelectableCards) as HTMLElement;
 		this.score = new Score(scoreELementId);
 
 		this.init();
@@ -61,7 +64,7 @@ export class Board {
 		return [...this.clickedCards];
 	}
 
-	public getSelectedCardIndices(): number[] | null {
+	public getSelectedCardIndices(): number[] | null { // fix dat deze een htmlelement en een nummer kan nemen als parameter
 		const selectedValue = parseInt(this.numberOfCards.value, 10);
 		if (this.indexOfClickedCards.length !== selectedValue) {
 			return null;
@@ -105,10 +108,19 @@ export class Board {
 		console.log(this.score.getScore());
 		// Prevent adding more than the selected number of cards
 
-		const selectedValue = this.numberOfCards ? parseInt(this.numberOfCards.value, 10) : 16;
-		if (this.clickedCards.length >= selectedValue && !this.isCardSelected(cardName || "")) {
-			console.log(`You can only select up to ${selectedValue} cards.`);
-			return;
+		if(window.mode === "api"){
+			const selectedValue = this.numberOfCards ? parseInt(this.numberOfCards.value, 10) : 16;
+			if (this.clickedCards.length >= selectedValue && !this.isCardSelected(cardName || "")) {
+				console.log(`You can only select up to ${selectedValue} cards.`);
+				return;
+			}
+		}else{
+			console.log(this.maxSelectableCards.innerText)
+			const selectableCards = this.maxSelectableCards ? parseInt(this.maxSelectableCards.innerText, 10) : 4;
+			if (this.clickedCards.length >= selectableCards && !this.isCardSelected(cardName || "")){
+				console.log(`You can only select up to ${selectableCards} cards.`);
+				return;
+			}
 		}
 		// Select the card
 		if (cardName) {

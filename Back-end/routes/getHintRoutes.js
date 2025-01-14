@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { getHint } = require("../services/getHintServices.js"); // Import the service function
+const { getHint} = require("../services/getHintServices.js"); // Import the service function
 
 // GET route for loading a hint
 router.get("/api/getHint", async (req, res) => {
