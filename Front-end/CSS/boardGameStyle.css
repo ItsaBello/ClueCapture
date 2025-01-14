@@ -100,7 +100,7 @@ h1 {
 }
 .text-box {
 	position: absolute;
-	top: 50%;
+	top: 70%;
 	width: 100%;
 	padding: 5px;
 	text-align: center;
@@ -119,10 +119,10 @@ h1 {
 }
 
 .card.big {
-	height: 200px;
+	height: 150px;
 	z-index: 10;
 	position: absolute;
-	top: 40%;
+	top: 45%;
 	left: 45%;
 	transform: translate(0%, 20%) scale(4);
 	cursor: default;
