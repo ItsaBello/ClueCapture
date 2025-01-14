@@ -203,7 +203,10 @@ h1 {
 }
 
 #hintForm {
-	margin-right: -100px;
+	position: absolute;
+	right: 130px;
+	bottom: 20px;
+	/* margin-right: -100px; */
 }
 
 #resetButton,
@@ -244,13 +247,12 @@ h1 {
 	margin: 10px;
 }
 
-#rulesButton {
-	margin-right: 40vw;
-}
-
 #submitHintButton {
-	flex-direction: row;
-	margin-right: -100px;
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	/* flex-direction: row;
+	margin-right: -100px; */
 }
 
 #inputField {
@@ -360,6 +362,18 @@ button:disabled:hover {
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 	margin-left: 10px;
+}
+
+#rulesButton {
+	position: fixed;
+	left: 140px;
+	bottom: 20px;
+}
+
+#resetButton {
+	position: fixed;
+	left: 20px;
+	bottom: 20px;
 }
 
 /* Dropdown styling */
