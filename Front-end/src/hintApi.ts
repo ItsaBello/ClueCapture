@@ -95,6 +95,10 @@ function initializeHintForm(): void {
         inputField.value = inputField.value.replace(/\s/g, "");
     });
 
+    inputField.addEventListener("input", () => {
+        inputField.value = inputField.value.replace(/\d/g, "");
+    });
+
     // Prevent default behavior on form submit and handle the hint submission
     form.addEventListener("submit", async (event: SubmitEvent) => {
         event.preventDefault(); // Prevent page refresh
