@@ -21,7 +21,7 @@ export async function fetchGameCardsFromDB() {
 	const images = data.Images || [];
 	const numberOfImages = data.Hints[0].number_of_images;
 	const gameId = data.game_id || "No game id available";
-	maxSelectableCards.innerText = `Selectable cards: ${numberOfImages}`;
+	maxSelectableCards.innerText = numberOfImages;
 
 	console.log(gameId, hint, images, numberOfImages); // Print de loaded game data naar browser console
 

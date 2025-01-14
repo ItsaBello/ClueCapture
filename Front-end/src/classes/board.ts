@@ -116,15 +116,19 @@ export class Board {
 		console.log(this.score.getScore());
 		// Prevent adding more than the selected number of cards
 
-		const selectedValue = this.numberOfCards ? parseInt(this.numberOfCards.value, 10) : 16;
-		if (this.clickedCards.length >= selectedValue && !this.isCardSelected(cardName || "")) {
-			console.log(`You can only select up to ${selectedValue} cards.`);
-			return;
-		}
-		const selectableCards = this.maxSelectableCards ? parseInt(this.maxSelectableCards.innerText, 10) : 4;
-		if (this.clickedCards.length >= selectableCards && !this.isCardSelected(cardName || "")){
-			console.log(`You can only select up to ${selectableCards} cards.`);
-			return;
+		if(window.mode === "api"){
+			const selectedValue = this.numberOfCards ? parseInt(this.numberOfCards.value, 10) : 16;
+			if (this.clickedCards.length >= selectedValue && !this.isCardSelected(cardName || "")) {
+				console.log(`You can only select up to ${selectedValue} cards.`);
+				return;
+			}
+		}else{
+			console.log(this.maxSelectableCards.innerText)
+			const selectableCards = this.maxSelectableCards ? parseInt(this.maxSelectableCards.innerText, 10) : 4;
+			if (this.clickedCards.length >= selectableCards && !this.isCardSelected(cardName || "")){
+				console.log(`You can only select up to ${selectableCards} cards.`);
+				return;
+			}
 		}
 		// Select the card
 		if (cardName) {
