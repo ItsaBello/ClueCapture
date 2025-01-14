@@ -281,13 +281,23 @@ h1 {
 	margin-right: 20px;
 }
 
-#backButton::before {
+.text {
+	margin-right: 10px;
+}
+
+.arrow {
+	font-size: 20px;
+	position: relative;
+	bottom: 2px;
+}
+
+/* #backButton::before {
 	content: "←";
 	position: relative;
 	top: 20px;
 	right: 30px;
 	font-size: 20px;
-}
+} */
 
 #inputField {
 	width: 250px; /* Set the width of the text field */
