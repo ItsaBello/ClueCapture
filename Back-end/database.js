@@ -3,7 +3,7 @@ const { Sequelize } = require("sequelize");
 const port = 3306;
 
 // Replace these with your actual database credentials
-const sequelize = new Sequelize("ClueCapture", "root", "test123", {
+const sequelize = new Sequelize("ClueCapture", "root", "Databases123*", {
 	host: "localhost",
 	dialect: "mysql",
 	port: port, // This indicates you're using MySQL (default port 3306)

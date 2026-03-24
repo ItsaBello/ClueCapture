@@ -39,25 +39,6 @@
 		</label>
 	</div>
 
-	<script>
-		const name = localStorage.getItem("playerName") || "Player one";
-		const playerNameElement = document.getElementById("playerName");
-		if (playerNameElement) {
-			playerNameElement.textContent = name;
-		}
-		//Difficult to put in TS so for now in HTML
-
-		// Initialize score
-		let score = 0;
-		const scoreCounterElement = document.getElementById("scoreCounter");
-		function updateScore(newScore) {
-			score = newScore;
-			if (scoreCounterElement) {
-				scoreCounterElement.textContent = `Score: ${score}`;
-			}
-		}
-	</script>
-
 	<div class="bottom-screen">
 		<button id="resetButton">Reset Game</button>
 		<button id="rulesButton">Rules</button>
@@ -119,6 +100,24 @@
 
 	<script type="module" src="../dist/gameSetup.js"></script>
 	<script type="module" src="../dist/imageLoaderFromDB.js"></script>
+	<script>
+		const name = localStorage.getItem("playerName") || "Player one";
+		const playerNameElement = document.getElementById("playerName");
+		if (playerNameElement) {
+			playerNameElement.textContent = name;
+		}
+		//Difficult to put in TS so for now in HTML
+
+		// Initialize score
+		let score = 0;
+		const scoreCounterElement = document.getElementById("scoreCounter");
+		function updateScore(newScore) {
+			score = newScore;
+			if (scoreCounterElement) {
+				scoreCounterElement.textContent = `Score: ${score}`;
+			}
+		}
+	</script>
 </body>
 
 </html>
