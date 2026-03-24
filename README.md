@@ -14,15 +14,18 @@ Het spel is ontworpen om je creatieve en deductieve vaardigheden uit te dagen.
 
 ## Installatie
 
-1. Clone het project naar je lokale machine:
-    git clone https://github.com/ItsaBello/ClueCapture.git
-2. Navigeer naar de projectmap:
-    cd *projectmap* (bv. ClueCapture)
-3. Installeer de benodigde dependencies:
-    npm install
+1. Clone het project naar je lokale machine: <br>
+    - git clone https://github.com/ItsaBello/ClueCapture.git
+2. Navigeer naar de projectmap: <br>
+    - cd *projectmap* (bv. ClueCapture)
+3. Installeer de benodigde dependencies: <br>
+    - npm install
+
+---
 
 ## Gebruik
-Na het installeren van de dependencies, kun je het spel starten met:
-    npm start
-Het spel zal nu draaien en je kunt beginnen met het spelen van ClueCapture via de browser op het ingestelde adres
-    (http://127.0.0.1:5500/Front-end/HTML/startScreen.html)
+
+1. Na het installeren van de dependencies, kun je het spel starten met: <br>
+    - npm start <br>
+2. Het spel zal nu draaien en je kunt beginnen met het spelen van ClueCapture via de browser op het ingestelde adres: <br>
+    - (http://127.0.0.1:5500/Front-end/HTML/startScreen.html)
